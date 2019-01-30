@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B95B6559220181D9006EC636 /* MLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B6558220181D9006EC636 /* MLWebView.m */; };
 		B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2327F21FEF97800562A5D /* AppDelegate.m */; };
 		B9D2328321FEF97800562A5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328221FEF97800562A5D /* ViewController.m */; };
 		B9D2328621FEF97800562A5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328421FEF97800562A5D /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B95B6557220181D9006EC636 /* MLWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebView.h; sourceTree = "<group>"; };
+		B95B6558220181D9006EC636 /* MLWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebView.m; sourceTree = "<group>"; };
+		B95B655A220184D6006EC636 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		B9D2327B21FEF97800562A5D /* iOS-FoundationKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-FoundationKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D2327E21FEF97800562A5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9D2327F21FEF97800562A5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B95B65562201819D006EC636 /* MLViewKit */ = {
+			isa = PBXGroup;
+			children = (
+				B95B6557220181D9006EC636 /* MLWebView.h */,
+				B95B6558220181D9006EC636 /* MLWebView.m */,
+			);
+			path = MLViewKit;
+			sourceTree = "<group>";
+		};
 		B9D2327221FEF97800562A5D = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,8 @@
 				B9D2327F21FEF97800562A5D /* AppDelegate.m */,
 				B9D2328121FEF97800562A5D /* ViewController.h */,
 				B9D2328221FEF97800562A5D /* ViewController.m */,
+				B95B655A220184D6006EC636 /* Macro.h */,
+				B95B65562201819D006EC636 /* MLViewKit */,
 				B9D2328421FEF97800562A5D /* Main.storyboard */,
 				B9D2328721FEF97900562A5D /* Assets.xcassets */,
 				B9D2328921FEF97900562A5D /* LaunchScreen.storyboard */,
@@ -141,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95B6559220181D9006EC636 /* MLWebView.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
 				B9D2328E21FEF97900562A5D /* main.m in Sources */,
 				B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */,
