@@ -11,9 +11,9 @@
 
 @implementation MLHTTPRequest
 
-+ (void)requestWithItem:(MLRequestItem *)item
-           successBlock:(void (^)(id responseObject))success
-           failureBlock:(void (^)(id errorObject))failure
++ (void)requestItem:(MLRequestItem *)item
+       successBlock:(void (^)(id responseObject))success
+       failureBlock:(void (^)(id errorObject))failure
 {
     NSString *url = [ML_STRING_FORMAT(item.serverUrl) stringByAppendingString:ML_STRING_FORMAT(item.functionPath)];
     NSMutableURLRequest *request = nil;
@@ -27,7 +27,7 @@
         case MLHTTP_GET:
         {
             if (item.requestParams.count > 0) {
-                NSString *params = [self toUrlParamString:item.requestParams];
+                NSString *params = [MLHTTPRequest toUrlParamString:item.requestParams];
                 if ([url containsString:@"?"]) {
                     url = [url stringByAppendingString:params];
                 }

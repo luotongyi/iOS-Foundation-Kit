@@ -10,6 +10,9 @@
 		B95B6559220181D9006EC636 /* MLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B6558220181D9006EC636 /* MLWebView.m */; };
 		B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B655D2201893A006EC636 /* MLRequestItem.m */; };
 		B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656022018B3E006EC636 /* MLHTTPRequest.m */; };
+		B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656422019696006EC636 /* UIApplication+MLHook.m */; };
+		B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656722019AB2006EC636 /* UIViewController+MLHook.m */; };
+		B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */; };
 		B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2327F21FEF97800562A5D /* AppDelegate.m */; };
 		B9D2328321FEF97800562A5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328221FEF97800562A5D /* ViewController.m */; };
 		B9D2328621FEF97800562A5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328421FEF97800562A5D /* Main.storyboard */; };
@@ -26,6 +29,12 @@
 		B95B655D2201893A006EC636 /* MLRequestItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLRequestItem.m; sourceTree = "<group>"; };
 		B95B655F22018B3E006EC636 /* MLHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLHTTPRequest.h; sourceTree = "<group>"; };
 		B95B656022018B3E006EC636 /* MLHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLHTTPRequest.m; sourceTree = "<group>"; };
+		B95B656322019696006EC636 /* UIApplication+MLHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+MLHook.h"; sourceTree = "<group>"; };
+		B95B656422019696006EC636 /* UIApplication+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+MLHook.m"; sourceTree = "<group>"; };
+		B95B656622019AB2006EC636 /* UIViewController+MLHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MLHook.h"; sourceTree = "<group>"; };
+		B95B656722019AB2006EC636 /* UIViewController+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MLHook.m"; sourceTree = "<group>"; };
+		B95B656922019F11006EC636 /* UINavigationController+MLHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MLHook.h"; sourceTree = "<group>"; };
+		B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MLHook.m"; sourceTree = "<group>"; };
 		B9D2327B21FEF97800562A5D /* iOS-FoundationKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-FoundationKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D2327E21FEF97800562A5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9D2327F21FEF97800562A5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -69,6 +78,19 @@
 			path = MLHTTP;
 			sourceTree = "<group>";
 		};
+		B95B656222019674006EC636 /* MLHook */ = {
+			isa = PBXGroup;
+			children = (
+				B95B656322019696006EC636 /* UIApplication+MLHook.h */,
+				B95B656422019696006EC636 /* UIApplication+MLHook.m */,
+				B95B656622019AB2006EC636 /* UIViewController+MLHook.h */,
+				B95B656722019AB2006EC636 /* UIViewController+MLHook.m */,
+				B95B656922019F11006EC636 /* UINavigationController+MLHook.h */,
+				B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */,
+			);
+			path = MLHook;
+			sourceTree = "<group>";
+		};
 		B9D2327221FEF97800562A5D = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +115,7 @@
 				B9D2328121FEF97800562A5D /* ViewController.h */,
 				B9D2328221FEF97800562A5D /* ViewController.m */,
 				B95B655A220184D6006EC636 /* Macro.h */,
+				B95B656222019674006EC636 /* MLHook */,
 				B95B65562201819D006EC636 /* MLViewKit */,
 				B95B655B2201890D006EC636 /* MLHTTP */,
 				B9D2328421FEF97800562A5D /* Main.storyboard */,
@@ -175,11 +198,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */,
+				B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */,
 				B95B6559220181D9006EC636 /* MLWebView.m in Sources */,
 				B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
 				B9D2328E21FEF97900562A5D /* main.m in Sources */,
 				B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */,
+				B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */,
+				B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

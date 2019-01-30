@@ -12,13 +12,13 @@
 @interface MLHTTPRequest : NSObject
 
 /**
- ** requestItem 请求消息体
- ** 成功返回
- ** 失败返回
+ * requestItem 请求消息体
+ * 成功返回
+ * 失败返回
  */
-+ (void)requestWithItem:(MLRequestItem *)item
-           successBlock:(void (^)(id responseObject))success
-           failureBlock:(void (^)(id errorObject))failure;
++ (void)requestItem:(MLRequestItem *)item
+       successBlock:(void (^)(id responseObject))success
+       failureBlock:(void (^)(id errorObject))failure;
 
 
 @end

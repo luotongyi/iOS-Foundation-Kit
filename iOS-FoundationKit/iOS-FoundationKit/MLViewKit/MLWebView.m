@@ -98,7 +98,7 @@
 }
 
 #pragma mark - webView加载
-- (void)startLoadUrl
+- (void)loadUrl
 {
     if (_url && _url.length > 0)
     {
@@ -115,7 +115,7 @@
 
 - (void)refresh
 {
-    [self startLoadUrl];
+    [self loadUrl];
 }
 
 #pragma mark - WKWebview
