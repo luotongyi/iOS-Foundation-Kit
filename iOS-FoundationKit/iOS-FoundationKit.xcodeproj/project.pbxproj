@@ -13,6 +13,11 @@
 		B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656422019696006EC636 /* UIApplication+MLHook.m */; };
 		B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656722019AB2006EC636 /* UIViewController+MLHook.m */; };
 		B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */; };
+		B95B656F2201A177006EC636 /* MLStatisticsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656E2201A177006EC636 /* MLStatisticsAPI.m */; };
+		B99B60C5220290F000B7D1DA /* MLInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60C4220290F000B7D1DA /* MLInstance.m */; };
+		B99B60C82202941000B7D1DA /* MLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60C72202941000B7D1DA /* MLUtility.m */; };
+		B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60CA22029E9A00B7D1DA /* MLCrashHandler.m */; };
+		B99B60D12202A1FC00B7D1DA /* MLAnalyse.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60D02202A1FC00B7D1DA /* MLAnalyse.m */; };
 		B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2327F21FEF97800562A5D /* AppDelegate.m */; };
 		B9D2328321FEF97800562A5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328221FEF97800562A5D /* ViewController.m */; };
 		B9D2328621FEF97800562A5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328421FEF97800562A5D /* Main.storyboard */; };
@@ -35,6 +40,16 @@
 		B95B656722019AB2006EC636 /* UIViewController+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MLHook.m"; sourceTree = "<group>"; };
 		B95B656922019F11006EC636 /* UINavigationController+MLHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MLHook.h"; sourceTree = "<group>"; };
 		B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MLHook.m"; sourceTree = "<group>"; };
+		B95B656D2201A177006EC636 /* MLStatisticsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLStatisticsAPI.h; sourceTree = "<group>"; };
+		B95B656E2201A177006EC636 /* MLStatisticsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLStatisticsAPI.m; sourceTree = "<group>"; };
+		B99B60C3220290F000B7D1DA /* MLInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLInstance.h; sourceTree = "<group>"; };
+		B99B60C4220290F000B7D1DA /* MLInstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLInstance.m; sourceTree = "<group>"; };
+		B99B60C62202941000B7D1DA /* MLUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLUtility.h; sourceTree = "<group>"; };
+		B99B60C72202941000B7D1DA /* MLUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLUtility.m; sourceTree = "<group>"; };
+		B99B60C922029E9A00B7D1DA /* MLCrashHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLCrashHandler.h; sourceTree = "<group>"; };
+		B99B60CA22029E9A00B7D1DA /* MLCrashHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLCrashHandler.m; sourceTree = "<group>"; };
+		B99B60CF2202A1FC00B7D1DA /* MLAnalyse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLAnalyse.h; sourceTree = "<group>"; };
+		B99B60D02202A1FC00B7D1DA /* MLAnalyse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLAnalyse.m; sourceTree = "<group>"; };
 		B9D2327B21FEF97800562A5D /* iOS-FoundationKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-FoundationKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D2327E21FEF97800562A5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9D2327F21FEF97800562A5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +106,23 @@
 			path = MLHook;
 			sourceTree = "<group>";
 		};
+		B95B656C2201A0BD006EC636 /* MLStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				B95B656D2201A177006EC636 /* MLStatisticsAPI.h */,
+				B95B656E2201A177006EC636 /* MLStatisticsAPI.m */,
+				B99B60CF2202A1FC00B7D1DA /* MLAnalyse.h */,
+				B99B60D02202A1FC00B7D1DA /* MLAnalyse.m */,
+				B99B60C922029E9A00B7D1DA /* MLCrashHandler.h */,
+				B99B60CA22029E9A00B7D1DA /* MLCrashHandler.m */,
+				B99B60C3220290F000B7D1DA /* MLInstance.h */,
+				B99B60C4220290F000B7D1DA /* MLInstance.m */,
+				B99B60C62202941000B7D1DA /* MLUtility.h */,
+				B99B60C72202941000B7D1DA /* MLUtility.m */,
+			);
+			path = MLStatistics;
+			sourceTree = "<group>";
+		};
 		B9D2327221FEF97800562A5D = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +147,7 @@
 				B9D2328121FEF97800562A5D /* ViewController.h */,
 				B9D2328221FEF97800562A5D /* ViewController.m */,
 				B95B655A220184D6006EC636 /* Macro.h */,
+				B95B656C2201A0BD006EC636 /* MLStatistics */,
 				B95B656222019674006EC636 /* MLHook */,
 				B95B65562201819D006EC636 /* MLViewKit */,
 				B95B655B2201890D006EC636 /* MLHTTP */,
@@ -197,14 +230,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B99B60D12202A1FC00B7D1DA /* MLAnalyse.m in Sources */,
 				B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */,
 				B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */,
+				B95B656F2201A177006EC636 /* MLStatisticsAPI.m in Sources */,
+				B99B60C82202941000B7D1DA /* MLUtility.m in Sources */,
 				B95B6559220181D9006EC636 /* MLWebView.m in Sources */,
 				B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
+				B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */,
 				B9D2328E21FEF97900562A5D /* main.m in Sources */,
 				B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */,
 				B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */,
+				B99B60C5220290F000B7D1DA /* MLInstance.m in Sources */,
 				B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

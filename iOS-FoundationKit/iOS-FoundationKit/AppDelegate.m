@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MLStatisticsAPI.h"
+
 #import "UIViewController+MLHook.h"
 #import "UIApplication+MLHook.h"
 
@@ -20,6 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[MLStatisticsAPI sharedInstance] registerKey:@"test"];
+    [[MLStatisticsAPI sharedInstance] setLogEnable:YES];
     
     [UIApplication hookApplication];
     [UIViewController hookViewController];

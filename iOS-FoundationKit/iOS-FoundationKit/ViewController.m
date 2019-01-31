@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MLWebView.h"
 #import "MLHTTPRequest.h"
+#import "MLUtility.h"
 
 @interface ViewController ()
 
@@ -20,11 +21,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self testAddButton];
+    [self testHookButton];
     
+    NSLog(@"%@",[MLUtility getUUID]);
 }
 
-- (void)testAddButton
+- (void)testHookButton
 {
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(220, 330, 50, 50)];
     [btn addTarget:self action:@selector(testNetwork) forControlEvents:UIControlEventTouchUpInside];
