@@ -23,8 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[MLStatisticsAPI sharedInstance] registerKey:@"test"];
-    [[MLStatisticsAPI sharedInstance] setLogEnable:YES];
+    [MLStatisticsAPI setLogEnable:YES];
+    [MLStatisticsAPI registerKey:@"test"];
     
     [UIApplication hookApplication];
     [UIViewController hookViewController];

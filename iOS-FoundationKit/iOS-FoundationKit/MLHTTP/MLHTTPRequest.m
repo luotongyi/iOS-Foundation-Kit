@@ -27,7 +27,7 @@
         case MLHTTP_GET:
         {
             if (item.requestParams.count > 0) {
-                NSString *params = [MLHTTPRequest toUrlParamString:item.requestParams];
+                NSString *params = [self toUrlParamString:item.requestParams];
                 if ([url containsString:@"?"]) {
                     url = [url stringByAppendingString:params];
                 }
@@ -89,9 +89,9 @@
                 [urlParamString appendString:@"&"];
             }
             if([itemObj isKindOfClass:[NSDictionary class]]){
-                [urlParamString appendString:[MLHTTPRequest toUrlParamString:itemObj]];
+                [urlParamString appendString:[self toUrlParamString:itemObj]];
             }else if([itemObj isKindOfClass:[NSArray class]]){
-                [urlParamString appendString:[MLHTTPRequest toUrlParamString:itemObj]];
+                [urlParamString appendString:[self toUrlParamString:itemObj]];
             }else{
                 //没有key-value不取
             }
@@ -113,11 +113,11 @@
             id valueObj = dict[key];
             if([valueObj isKindOfClass:[NSDictionary class]])
             {
-                [urlParamString appendString:[MLHTTPRequest toUrlParamString:valueObj]];
+                [urlParamString appendString:[self toUrlParamString:valueObj]];
             }
             else if([valueObj isKindOfClass:[NSArray class]])
             {
-                [urlParamString appendString:[MLHTTPRequest toUrlParamString:valueObj]];
+                [urlParamString appendString:[self toUrlParamString:valueObj]];
             }
             else
             {

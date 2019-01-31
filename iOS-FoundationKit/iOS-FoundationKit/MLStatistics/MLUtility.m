@@ -80,7 +80,7 @@
 
 + (NSString *)getNetworkType
 {
-    BOOL isIPhoneX = [[MLUtility getDeviceModel] hasPrefix:@"iPhone_X"];
+    BOOL isIPhoneX = [[self getDeviceModel] hasPrefix:@"iPhone_X"];
     UIApplication *app = [UIApplication sharedApplication];
     id statusBar = [app valueForKeyPath:@"statusBar"];
     NSString *network = @"";

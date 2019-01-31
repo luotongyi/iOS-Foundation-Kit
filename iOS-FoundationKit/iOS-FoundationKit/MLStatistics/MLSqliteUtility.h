@@ -11,6 +11,17 @@
 
 @interface MLSqliteUtility : NSObject
 
-#warning 还未完善
+/**
+ *  @brief MLSqliteUtility单例
+ *  @return MLSqliteUtility对象
+ */
++ (instancetype)sharedInstance;
+
+/**
+ *  @brief 创建数据库的表
+ *  sql 创建表的sql语句
+ */
+- (void)createTable:(NSString *)sql;
+
 
 @end

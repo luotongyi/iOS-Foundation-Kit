@@ -11,19 +11,13 @@
 @interface MLStatisticsAPI : NSObject
 
 /**
- *  @brief MLStatisticsAPI单例
- *  @return MLStatisticsAPI对象
- */
-+ (instancetype)sharedInstance;
-
-/**
  *  @brief 开启Log日志，默认NO
  */
-- (void)setLogEnable:(BOOL)enable;
++ (void)setLogEnable:(BOOL)enable;
 
 /**
  *  @brief 注册APP的key，不能为nil、null，
  */
-- (void)registerKey:(NSString *)key;
++ (void)registerKey:(NSString *)key;
 
 @end

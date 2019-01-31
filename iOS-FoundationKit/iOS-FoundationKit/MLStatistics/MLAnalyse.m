@@ -7,7 +7,7 @@
 //
 
 #import "MLAnalyse.h"
-
+#import "MLHookURLSession.h"
 #import "MLInstance.h"
 
 #define ML_PROTOCOL_KEY     @"ML_SessionProtocol_Key"
@@ -27,7 +27,6 @@
 // 开始监听
 + (void)startMonitor
 {
-    MLInstance *sessionConfiguration = [MLInstance sharedInstance];
     Class cls = NSClassFromString(@"WKBrowsingContextController");
     SEL sel = NSSelectorFromString(@"registerSchemeForCustomProtocol:");
     if (cls && sel) {
@@ -36,8 +35,7 @@
             [(id)cls performSelector:sel withObject:ML_RULE_HTTPS];
         }
     }
-    [sessionConfiguration hookSessionConfiguration];
-    
+    [MLHookURLSession hookSessionConfiguration];
     [NSURLProtocol registerClass:[MLAnalyse class]];
 }
 

@@ -30,10 +30,5 @@
  */
 + (instancetype)sharedInstance;
 
-/**
- *  hook网络请求框架的SessionConfiguration（AFNetworking）
- */
-- (void)hookSessionConfiguration;
-
 
 @end

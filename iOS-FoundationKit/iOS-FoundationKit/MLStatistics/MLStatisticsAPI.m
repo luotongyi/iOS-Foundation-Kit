@@ -14,37 +14,22 @@
 
 @implementation MLStatisticsAPI
 
-+ (instancetype)sharedInstance
-{
-    static MLStatisticsAPI *instance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-    });
-    return instance;
-}
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        //创建数据库
-        
-    }
-    return self;
-}
-
-- (void)setLogEnable:(BOOL)enable
++ (void)setLogEnable:(BOOL)enable
 {
     [MLInstance sharedInstance].enableLog = enable;
 }
 
-- (void)registerKey:(NSString *)key
++ (void)registerKey:(NSString *)key
 {
+    ML_INFORMATION_LOG(@"注册的key：%@",key);
+    
     NSSetUncaughtExceptionHandler(&MLUncaughtExceptionHandler);
     [MLAnalyse startMonitor];
+#warning 创建数据库，还未完善
     
-    ML_INFORMATION_LOG(@"注册的key：%@",key);
+    
+    
+    
     
 #warning 发送网络请求，校验key，还未完善
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
