@@ -46,11 +46,12 @@
     
     ML_INFORMATION_LOG(@"注册的key：%@",key);
     
-    //校验key
+#warning 发送网络请求，校验key，还未完善
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [MLInstance sharedInstance].registerKey = key;
         
+#warning 上传上次缓存的Crash信息，还未完善
         
         
     });

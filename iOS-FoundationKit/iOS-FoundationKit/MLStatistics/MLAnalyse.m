@@ -102,7 +102,8 @@
         }
         else{
             ML_INFORMATION_LOG(@"%@----%@",statusCode,urlString);
-            //插入数据库
+            
+#warning 数据库插入，还未完善
             
         
         }
