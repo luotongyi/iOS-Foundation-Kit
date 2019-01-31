@@ -1,5 +1,5 @@
 //
-//  MLSqliteUtility.h
+//  MLSqliteInstance.h
 //  iOS-FoundationKit
 //
 //  Created by luoty on 2019/1/31.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "MLSqliteModel.h"
 
-@interface MLSqliteUtility : NSObject
+@interface MLSqliteInstance : NSObject
 
 /**
- *  @brief MLSqliteUtility单例
- *  @return MLSqliteUtility对象
+ *  @brief MLSqliteInstance单例
+ *  @return MLSqliteInstance对象
  */
 + (instancetype)sharedInstance;
 

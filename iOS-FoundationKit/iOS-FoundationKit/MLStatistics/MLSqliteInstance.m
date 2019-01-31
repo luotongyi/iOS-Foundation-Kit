@@ -1,29 +1,29 @@
 //
-//  MLSqliteUtility.m
+//  MLSqliteInstance.m
 //  iOS-FoundationKit
 //
 //  Created by luoty on 2019/1/31.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
-#import "MLSqliteUtility.h"
+#import "MLSqliteInstance.h"
 #import <sqlite3.h>
 #import "MLUtility.h"
 #import "MLInstance.h"
 
 #define ML_SQLITE_DB    @"ML_SQLITE.db"
 
-@interface MLSqliteUtility()
+@interface MLSqliteInstance()
 {
     sqlite3 *database;
 }
 
 @end
 
-@implementation MLSqliteUtility
+@implementation MLSqliteInstance
 
 + (instancetype)sharedInstance{
-    static MLSqliteUtility *instance;
+    static MLSqliteInstance *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance=[[self alloc] init];
@@ -61,5 +61,6 @@
     }
     [self closeSqliteDB];
 }
+
 
 @end
