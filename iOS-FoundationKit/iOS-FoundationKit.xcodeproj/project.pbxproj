@@ -14,6 +14,9 @@
 		B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656722019AB2006EC636 /* UIViewController+MLHook.m */; };
 		B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */; };
 		B95B656F2201A177006EC636 /* MLStatisticsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656E2201A177006EC636 /* MLStatisticsAPI.m */; };
+		B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */; };
+		B963C19F220D1CD5000F28A5 /* UIView+MLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */; };
+		B963C1A2220D1EB7000F28A5 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C1A1220D1EB7000F28A5 /* NSString+Utility.m */; };
 		B99B60C5220290F000B7D1DA /* MLInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60C4220290F000B7D1DA /* MLInstance.m */; };
 		B99B60C82202941000B7D1DA /* MLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60C72202941000B7D1DA /* MLUtility.m */; };
 		B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60CA22029E9A00B7D1DA /* MLCrashHandler.m */; };
@@ -45,6 +48,12 @@
 		B95B656A22019F11006EC636 /* UINavigationController+MLHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MLHook.m"; sourceTree = "<group>"; };
 		B95B656D2201A177006EC636 /* MLStatisticsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLStatisticsAPI.h; sourceTree = "<group>"; };
 		B95B656E2201A177006EC636 /* MLStatisticsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLStatisticsAPI.m; sourceTree = "<group>"; };
+		B963C19A220D17FB000F28A5 /* MLBaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLBaseViewModel.h; sourceTree = "<group>"; };
+		B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLBaseViewModel.m; sourceTree = "<group>"; };
+		B963C19D220D1CD5000F28A5 /* UIView+MLFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MLFrame.h"; sourceTree = "<group>"; };
+		B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLFrame.m"; sourceTree = "<group>"; };
+		B963C1A0220D1EB7000F28A5 /* NSString+Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
+		B963C1A1220D1EB7000F28A5 /* NSString+Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utility.m"; sourceTree = "<group>"; };
 		B99B60C3220290F000B7D1DA /* MLInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLInstance.h; sourceTree = "<group>"; };
 		B99B60C4220290F000B7D1DA /* MLInstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLInstance.m; sourceTree = "<group>"; };
 		B99B60C62202941000B7D1DA /* MLUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLUtility.h; sourceTree = "<group>"; };
@@ -138,6 +147,19 @@
 			path = MLStatistics;
 			sourceTree = "<group>";
 		};
+		B963C199220D17A4000F28A5 /* MLUtility */ = {
+			isa = PBXGroup;
+			children = (
+				B963C19A220D17FB000F28A5 /* MLBaseViewModel.h */,
+				B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */,
+				B963C19D220D1CD5000F28A5 /* UIView+MLFrame.h */,
+				B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */,
+				B963C1A0220D1EB7000F28A5 /* NSString+Utility.h */,
+				B963C1A1220D1EB7000F28A5 /* NSString+Utility.m */,
+			);
+			path = MLUtility;
+			sourceTree = "<group>";
+		};
 		B9D2327221FEF97800562A5D = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +186,7 @@
 				B95B655A220184D6006EC636 /* Macro.h */,
 				B95B656C2201A0BD006EC636 /* MLStatistics */,
 				B95B656222019674006EC636 /* MLHook */,
+				B963C199220D17A4000F28A5 /* MLUtility */,
 				B95B65562201819D006EC636 /* MLViewKit */,
 				B95B655B2201890D006EC636 /* MLHTTP */,
 				B9D2328421FEF97800562A5D /* Main.storyboard */,
@@ -253,10 +276,13 @@
 				B95B6559220181D9006EC636 /* MLWebView.m in Sources */,
 				B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */,
 				B99B60D72202D37200B7D1DA /* MLSqliteModel.m in Sources */,
+				B963C1A2220D1EB7000F28A5 /* NSString+Utility.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
 				B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */,
 				B9D2328E21FEF97900562A5D /* main.m in Sources */,
 				B9FCADE82202E2C800ABCCD0 /* MLHookURLSession.m in Sources */,
+				B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */,
+				B963C19F220D1CD5000F28A5 /* UIView+MLFrame.m in Sources */,
 				B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */,
 				B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */,
 				B9FCADEB2202E95F00ABCCD0 /* MLSqliteInstance.m in Sources */,

@@ -101,9 +101,10 @@
         else{
             ML_INFORMATION_LOG(@"%@----%@",statusCode,urlString);
             
-#warning 数据库插入，还未完善
+#warning 接口信息数据库插入
             
         
+            
         }
     }
     if (error) {

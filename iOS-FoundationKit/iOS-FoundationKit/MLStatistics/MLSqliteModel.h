@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  插入数据库的对象
+ *  插入数据库的对象，和数据库的字段保持一致
  */
 @interface MLSqliteModel : NSObject
 
