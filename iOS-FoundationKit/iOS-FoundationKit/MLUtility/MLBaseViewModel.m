@@ -10,6 +10,16 @@
 
 @implementation MLBaseViewModel
 
+- (void)setSuccessBlock:(requestSuccessBlock)successBlock
+{
+    _successBlock = successBlock;
+}
+
+- (void)setFailureBlock:(requestFailureBlock)failureBlock
+{
+    _failureBlock = failureBlock;
+}
+
 - (void)requestSuccess:(requestSuccessBlock)successBlock
                failure:(requestFailureBlock)failureBlock
 {
