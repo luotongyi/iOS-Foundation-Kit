@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  @brief 包括Crash信息上传、监听所有经过APP的接口
+ *  通过sqlite缓存内容
+ */
 @interface MLStatisticsAPI : NSObject
 
 /**

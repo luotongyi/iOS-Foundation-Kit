@@ -168,8 +168,6 @@
 				B99B60D62202D37200B7D1DA /* MLSqliteModel.m */,
 				B99B60C3220290F000B7D1DA /* MLInstance.h */,
 				B99B60C4220290F000B7D1DA /* MLInstance.m */,
-				B99B60C62202941000B7D1DA /* MLUtility.h */,
-				B99B60C72202941000B7D1DA /* MLUtility.m */,
 			);
 			path = MLStatistics;
 			sourceTree = "<group>";
@@ -177,6 +175,8 @@
 		B963C199220D17A4000F28A5 /* MLUtility */ = {
 			isa = PBXGroup;
 			children = (
+				B99B60C62202941000B7D1DA /* MLUtility.h */,
+				B99B60C72202941000B7D1DA /* MLUtility.m */,
 				B963C19A220D17FB000F28A5 /* MLBaseViewModel.h */,
 				B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */,
 				B963C19D220D1CD5000F28A5 /* UIView+MLFrame.h */,
