@@ -10,6 +10,7 @@
 		B912809F221554C4004EC2E9 /* MLShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B912809E221554C4004EC2E9 /* MLShareObject.m */; };
 		B91280A22215553B004EC2E9 /* MLShareResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280A12215553B004EC2E9 /* MLShareResult.m */; };
 		B91280A522155611004EC2E9 /* MLShareHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280A422155611004EC2E9 /* MLShareHandler.m */; };
+		B91280AB221561BE004EC2E9 /* MLTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280AA221561BE004EC2E9 /* MLTipView.m */; };
 		B95B6559220181D9006EC636 /* MLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B6558220181D9006EC636 /* MLWebView.m */; };
 		B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B655D2201893A006EC636 /* MLRequestItem.m */; };
 		B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656022018B3E006EC636 /* MLHTTPRequest.m */; };
@@ -42,6 +43,8 @@
 		B91280A12215553B004EC2E9 /* MLShareResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLShareResult.m; sourceTree = "<group>"; };
 		B91280A322155611004EC2E9 /* MLShareHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLShareHandler.h; sourceTree = "<group>"; };
 		B91280A422155611004EC2E9 /* MLShareHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLShareHandler.m; sourceTree = "<group>"; };
+		B91280A9221561BE004EC2E9 /* MLTipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLTipView.h; sourceTree = "<group>"; };
+		B91280AA221561BE004EC2E9 /* MLTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLTipView.m; sourceTree = "<group>"; };
 		B95B6557220181D9006EC636 /* MLWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebView.h; sourceTree = "<group>"; };
 		B95B6558220181D9006EC636 /* MLWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebView.m; sourceTree = "<group>"; };
 		B95B655A220184D6006EC636 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 			children = (
 				B95B6557220181D9006EC636 /* MLWebView.h */,
 				B95B6558220181D9006EC636 /* MLWebView.m */,
+				B91280A9221561BE004EC2E9 /* MLTipView.h */,
+				B91280AA221561BE004EC2E9 /* MLTipView.m */,
 			);
 			path = MLViewKit;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */,
 				B963C19F220D1CD5000F28A5 /* UIView+MLFrame.m in Sources */,
 				B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */,
+				B91280AB221561BE004EC2E9 /* MLTipView.m in Sources */,
 				B95B656822019AB2006EC636 /* UIViewController+MLHook.m in Sources */,
 				B9FCADEB2202E95F00ABCCD0 /* MLSqliteInstance.m in Sources */,
 				B912809F221554C4004EC2E9 /* MLShareObject.m in Sources */,
