@@ -1,12 +1,12 @@
 //
-//  MLTipView.m
+//  MLTipsView.m
 //  iOS-FoundationKit
 //
 //  Created by luoty on 2019/2/14.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
-#import "MLTipView.h"
+#import "MLTipsView.h"
 
 #define ML_SCREEN_WIDTH               CGRectGetWidth([[UIScreen mainScreen] bounds])
 #define ML_SCREEN_HEIGHT              CGRectGetHeight([[UIScreen mainScreen] bounds])
@@ -14,14 +14,14 @@
 #define ml_OffsetX    15       //!< 文字距离背景图片left，right距离
 #define ml_OffsetY    15       //!< 文字具体背景图片bottom，top距离
 
-@interface MLTipView()
+@interface MLTipsView()
 {
     UILabel         *_tipsLabel;        //!< 提示文字
     UIImageView     *_bgImageview;      //!< 背景图片
 }
 @end
 
-@implementation MLTipView
+@implementation MLTipsView
 
 + (instancetype)sharedInstance
 {
@@ -169,6 +169,5 @@
 {
     [self removeFromSuperview];
 }
-
 
 @end

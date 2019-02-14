@@ -1,5 +1,5 @@
 //
-//  MLTipView.h
+//  MLTipsView.h
 //  iOS-FoundationKit
 //
 //  Created by luoty on 2019/2/14.
@@ -11,7 +11,7 @@
 /**
  *  弱提示，支持多行
  */
-@interface MLTipView : UIView
+@interface MLTipsView : UIView
 
 @property (nonatomic, copy  )   UIImage    *bgImage;   //提示语的背景图片，如果没有则不显示
 
