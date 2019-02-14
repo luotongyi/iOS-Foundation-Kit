@@ -133,11 +133,61 @@
     return [UIDevice currentDevice].identifierForVendor.UUIDString;
 }
 
-+ (NSString *)createFile:(NSString *)fileName
++ (NSString *)getFilePath:(NSString *)fileName
 {
     NSString *name =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString *filePath = [name stringByAppendingPathComponent:fileName];
+    
     return filePath;
+}
+
++ (BOOL)writeToFile:(NSString *)fileName fileObject:(id)obj objKey:(NSString *)objKey
+{
+    if (!objKey) {
+        objKey = @"defaultKey";
+    }
+    id fileObj = [obj mutableCopy];
+    //归档
+    NSMutableData *data = [[NSMutableData alloc] init];
+    //创建归档辅助类
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    //编码
+    [archiver encodeObject:fileObj forKey:objKey];
+    //结束编码
+    [archiver finishEncoding];
+    //写入到沙盒
+    NSString *filePath = [self getFilePath:fileName];
+    if([data writeToFile:filePath atomically:YES]){
+        return YES;
+    }
+    return NO;
+}
+
++ (id)readFile:(NSString *)fileName objKey:(NSString *)objKey
+{
+    if (!objKey) {
+        objKey = @"defaultKey";
+    }
+    NSString *filePath = [self getFilePath:fileName];
+    //解档
+    NSData *undata = [[NSData alloc] initWithContentsOfFile:filePath];
+    //解档辅助类
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:undata];
+    //解码并解档出model
+    id fileObj = [unarchiver decodeObjectForKey:objKey];
+    //关闭解档
+    [unarchiver finishDecoding];
+    if ([fileObj isKindOfClass:[NSArray class]])
+    {
+        return [NSMutableArray arrayWithArray:(NSArray *)fileObj];
+    }
+    else if ([fileObj isKindOfClass:[NSDictionary class]])
+    {
+        return [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)fileObj];
+    }
+    else{
+        return @"";
+    }
 }
 
 @end

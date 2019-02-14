@@ -48,10 +48,31 @@
 + (NSString *)getUUID;
 
 /**
- *  @brief 创建文件
+ *  @brief 获取文件路径
  *  fileName: 创建的文件名
  *  retrun: NSDocumentDirectory下的文件路径
  **/
-+ (NSString *)createFile:(NSString *)fileName;
++ (NSString *)getFilePath:(NSString *)fileName;
+
+/**
+ *  @brief 归档方式存储本地数据
+ *  fileName    文件名称
+ *  obj         存储对象，包括数组、字典
+ *  objKey      存储obj的key
+ *  @return     返回文件是否存储成功：YES、NO
+ **/
++ (BOOL)writeToFile:(NSString *)fileName
+         fileObject:(id)obj
+             objKey:(NSString *)objKey;
+
+/**
+ *  @brief 获取归档存储在本地的数据
+ *  fileName    文件名称
+ *  objKey      存储obj的key
+ *  @return     返回归档的数据，包括数组、字典，如果没有，则返回 @"";
+ **/
++ (id)readFile:(NSString *)fileName
+        objKey:(NSString *)objKey;
+
 
 @end

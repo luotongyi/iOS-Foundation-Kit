@@ -33,7 +33,7 @@
 
 - (void)openSqliteDB
 {
-    NSString *fileName = [MLInfoUtility createFile:ML_SQLITE_DB];
+    NSString *fileName = [MLInfoUtility getFilePath:ML_SQLITE_DB];
     int result = sqlite3_open([fileName UTF8String], &database);
     if (result == SQLITE_OK) {
         ML_INFORMATION_LOG(@"创建数据库成功");
