@@ -1,14 +1,14 @@
 //
-//  NSString+Utility.m
+//  NSString+MLUtility.m
 //  iOS-FoundationKit
 //
-//  Created by luoty on 2019/2/8.
+//  Created by luoty on 2019/2/14.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
-#import "NSString+Utility.h"
+#import "NSString+MLUtility.h"
 
-@implementation NSString (Utility)
+@implementation NSString (MLUtility)
 
 - (BOOL)isNumber
 {
@@ -49,5 +49,6 @@
     CGSize size = [self boundingRectWithSize:CGSizeMake(width, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     return size;
 }
+
 
 @end

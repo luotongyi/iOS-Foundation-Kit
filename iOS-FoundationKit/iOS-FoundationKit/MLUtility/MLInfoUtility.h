@@ -1,14 +1,15 @@
 //
-//  MLUtility.h
+//  MLInfoUtility.h
 //  iOS-FoundationKit
 //
-//  Created by luoty on 2019/1/31.
+//  Created by luoty on 2019/2/14.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface MLUtility : NSObject
+@interface MLInfoUtility : NSObject
 
 /**
  *  @brief 获取APP版本号

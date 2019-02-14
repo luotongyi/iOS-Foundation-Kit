@@ -1,17 +1,15 @@
 //
-//  MLUtility.m
+//  MLInfoUtility.m
 //  iOS-FoundationKit
 //
-//  Created by luoty on 2019/1/31.
+//  Created by luoty on 2019/2/14.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
-#import "MLUtility.h"
-#import <UIKit/UIKit.h>
+#import "MLInfoUtility.h"
 #import "sys/utsname.h"
 
-@implementation MLUtility
-
+@implementation MLInfoUtility
 
 + (NSString *)getAppVersion
 {

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "MLWebView.h"
 #import "MLHTTPRequest.h"
-#import "MLUtility.h"
+#import "MLInfoUtility.h"
 #import "MLSqliteModel.h"
 
 @interface ViewController ()
@@ -27,7 +27,7 @@
     MLSqliteModel *model = [MLSqliteModel new];
     
     NSLog(@"%@",model.timestamp);
-    NSLog(@"%@",[MLUtility getUUID]);
+    NSLog(@"%@",[MLInfoUtility getUUID]);
 }
 
 - (void)testHookButton

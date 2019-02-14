@@ -1,15 +1,15 @@
 //
-//  NSString+Utility.h
+//  NSString+MLUtility.h
 //  iOS-FoundationKit
 //
-//  Created by luoty on 2019/2/8.
+//  Created by luoty on 2019/2/14.
 //  Copyright © 2019年 luoty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface NSString (Utility)
+@interface NSString (MLUtility)
 
 /**
  * 字符串数字校验
@@ -44,8 +44,6 @@
  */
 - (CGSize)MLSizeFormat:(UIFont *)font
                maxWith:(CGFloat)width;
-
-
 
 
 @end
