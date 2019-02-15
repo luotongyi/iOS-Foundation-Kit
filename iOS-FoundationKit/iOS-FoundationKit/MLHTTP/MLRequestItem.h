@@ -47,5 +47,17 @@ typedef NS_ENUM(NSUInteger, MLHTTPMethod) {
  */
 @property (nonatomic, assign)   MLHTTPMethod requestMethod;
 
+/**
+ *  是否有网络等待框，YES展示，NO不展示，默认为NO
+ *  当为YES时，必须设置targetSuper
+ */
+@property (nonatomic, assign)   BOOL         showDialog;
+
+/**
+ *  发出请求方, 默认为 nil
+ *  设置当前网络发送者，UIView或者UIViewController
+ */
+@property (nonatomic, weak  )   NSObject     *targetSuper;
+
 
 @end

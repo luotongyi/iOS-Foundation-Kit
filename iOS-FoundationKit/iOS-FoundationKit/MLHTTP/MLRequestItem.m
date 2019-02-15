@@ -20,6 +20,9 @@
         _requestParams = @{};
         _headerParams = @{};
         _requestMethod = MLHTTP_POST;
+        
+        _showDialog = NO;
+        _targetSuper = nil;
     }
     return self;
 }
