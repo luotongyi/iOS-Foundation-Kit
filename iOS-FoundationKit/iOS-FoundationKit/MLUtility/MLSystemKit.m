@@ -8,13 +8,16 @@
 
 #import "MLSystemKit.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Macro.h"
 
-@interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureMetadataOutputObjectsDelegate>
 {
     CLLocationManager           *_locationManager;              //!< 定位管理器
     CLLocationCoordinate2D      _coordinate;                    //!< 当前经纬度
     CLLocation                  *_lastLocation;
+    
+    AVCaptureSession *_session;
 }
 
 @end
@@ -43,6 +46,7 @@
             }
                 break;
             case MLSystem_Camera:
+            case MLSystem_QRCode:
             default:
                 break;
         }
@@ -202,6 +206,84 @@
         controller = controller.presentedViewController;
     }
     return controller;
+}
+
+#pragma -mark 二维码扫描
+- (void)startCamera:(UIView *)view
+{
+    if (_session) {
+        [_session startRunning];
+        return;
+    }
+    
+    NSString *mediaType = AVMediaTypeVideo;//读取媒体类型
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];//读取设备授权状态
+    if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+        ML_LOG(@"%@",@"请打开相机权限");
+        return;
+    }
+    
+    _session = [[AVCaptureSession alloc]init];
+    _session.sessionPreset = AVCaptureSessionPresetHigh;
+    AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+    
+    if ([_session canAddInput:input]) {
+        [_session addInput:input];
+    }
+    
+    AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc]init];
+    if ([_session canAddOutput:output]) {
+        [_session addOutput:output];
+        // output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
+        output.metadataObjectTypes =  @[AVMetadataObjectTypeQRCode,//二维码
+                                        //以下为条形码，如果项目只需要扫描二维码，下面都不要写
+                                        AVMetadataObjectTypeEAN13Code,
+                                        AVMetadataObjectTypeEAN8Code,
+                                        AVMetadataObjectTypeUPCECode,
+                                        AVMetadataObjectTypeCode39Code,
+                                        AVMetadataObjectTypeCode39Mod43Code,
+                                        AVMetadataObjectTypeCode93Code,
+                                        AVMetadataObjectTypeCode128Code,
+                                        AVMetadataObjectTypePDF417Code];
+    }
+    //    if (_rect.size.width == 0 || _rect.size.height == 0) {
+    //        output.rectOfInterest = CGRectMake(CROP_RECT.origin.y/(CGRectGetHeight([UIScreen mainScreen].bounds)-20-44), CROP_RECT.origin.x/kscreenWidth, CROP_RECT.size.height/(CGRectGetHeight([UIScreen mainScreen].bounds)-20-44), CROP_RECT.size.width/kscreenWidth);
+    //    }
+    //    else{
+    //        output.rectOfInterest = CROP_RECT;
+    //    }
+    //    output.rectOfInterest = CROP_RECT;
+    [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    
+    AVCaptureVideoPreviewLayer * avLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
+    avLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    avLayer.frame = [UIScreen mainScreen].bounds;
+    [view.layer insertSublayer:avLayer atIndex:0];
+    [_session startRunning];
+}
+
+- (void)stopCamera
+{
+    [_session stopRunning];
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+    NSString *stringValue = @"";
+    if (metadataObjects.count > 0) {
+        AVMetadataMachineReadableCodeObject *metadataObject = metadataObjects[0];
+        stringValue = metadataObject.stringValue;
+    }
+    [self operate:stringValue];
+}
+
+- (void)operate:(NSString *)symbolStr{
+    [_session stopRunning];
+    //扫描结果
+    if (_completeHandle) {
+        _completeHandle(symbolStr);
+    }
 }
 
 

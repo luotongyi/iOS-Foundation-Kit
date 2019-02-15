@@ -14,11 +14,12 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
     
     MLSystem_Camera = 0,        //相机功能
     MLSystem_Location,         //定位功能
+    MLSystem_QRCode,            //二维码
 };
 
 /**
  *  @brief 系统默认功能集合
- *  包括：拍照、定位、推送注册
+ *  包括：拍照、定位、推送注册、二维码扫描
  *  所有涉及到系统功能的都需要在plist文件里配置对应权限
  **/
 @interface MLSystemKit : NSObject
@@ -37,19 +38,36 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
 @property (nonatomic, copy  )   void(^locationBlock)(CLPlacemark *placemark,CLLocationCoordinate2D curCoordinate2D);
 
 /**
- *  @brief 选择照片返回（单张）
- */
-@property (nonatomic, copy  )   void(^imagePickerBlock)(UIImage *pickerImage);
-
-/**
  *  @brief 开始获取经纬度
  */
 - (void)startUpdatingLocation;
 
 /**
+ *  @brief 选择照片返回（单张）
+ */
+@property (nonatomic, copy  )   void(^imagePickerBlock)(UIImage *pickerImage);
+
+/**
  *  @brief 拉起拍照/相册功能，拍照/选择照片（单张）
  */
 - (void)getMediaFromSource:(UIImagePickerControllerSourceType)sourceType;
+
+/**
+ *  @brief 需要先调用此block，再执行startCamera
+ */
+@property (nonatomic, copy  )   void (^completeHandle)(NSString *qrCode);
+
+/**
+ *  @brief 开始扫描二维码
+ *
+ *  @param view 把扫描控件添加到该view上
+ */
+- (void)startCamera:(UIView *)view;
+
+/**
+ *  @brief 停止扫描
+ */
+- (void)stopCamera;
 
 
 @end
