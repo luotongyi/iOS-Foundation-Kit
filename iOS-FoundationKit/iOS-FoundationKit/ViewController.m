@@ -12,6 +12,8 @@
 #import "MLInfoUtility.h"
 #import "MLSqliteModel.h"
 
+#import "MLSystemKit.h"
+
 @interface ViewController ()
 
 @end
@@ -28,6 +30,9 @@
     
     NSLog(@"%@",model.timestamp);
     NSLog(@"%@",[MLInfoUtility getUUID]);
+    
+//    MLSystemKit *kit = [[MLSystemKit alloc]init];
+    [MLSystemKit registeNotification];
 }
 
 - (void)testHookButton

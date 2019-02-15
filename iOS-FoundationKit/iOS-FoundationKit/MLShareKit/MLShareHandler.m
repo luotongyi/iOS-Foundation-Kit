@@ -241,7 +241,7 @@
 }
 
 #pragma mark - QQ
-- (void)shareToQQ:(AIShareObject *)obj qzone:(BOOL)qzone;
+- (void)shareToQQ:(MLShareObject *)obj qzone:(BOOL)qzone;
 {
     if (obj.bigImage) {
         NSData *imageData = UIImagePNGRepresentation(obj.bigImage);
@@ -314,7 +314,7 @@
 }
 
 #pragma mark - 微信
-- (void)shareToWeChat:(AIShareObject *)obj bText:(BOOL)bText WXScene:(enum WXScene)scene;
+- (void)shareToWeChat:(MLShareObject *)obj bText:(BOOL)bText WXScene:(enum WXScene)scene;
 {
     SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
     req.scene = scene;
@@ -383,7 +383,7 @@
 }
 
 #pragma mark - 邮件分享
-- (void)shareToMail:(AIShareObject *)obj
+- (void)shareToMail:(MLShareObject *)obj
 {
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
     if (!mailClass) {
@@ -404,7 +404,7 @@
 }
 
 //调出邮件发送窗口
-- (void)displayMailPicker:(AIShareObject *)shareContent
+- (void)displayMailPicker:(MLShareObject *)shareContent
 {
     MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
     mailPicker.mailComposeDelegate = self;
@@ -454,7 +454,7 @@
 }
 
 #pragma mark - 复制到剪切板
-- (void)copyToPasteboard:(AIShareObject *)obj
+- (void)copyToPasteboard:(MLShareObject *)obj
 {
     NSMutableString *message = [NSMutableString stringWithFormat:@"%@\n%@\n%@",obj.title,obj.message,obj.webUrl];
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -467,7 +467,7 @@
 }
 
 #pragma mark - 短信
-- (void)shareToMessage:(AIShareObject *)obj
+- (void)shareToMessage:(MLShareObject *)obj
 {
     if ([MFMessageComposeViewController canSendText])
     {
@@ -616,6 +616,7 @@
         }
     }
 }
+
 #pragma mark - private
 - (UIViewController *)rootViewController
 {
