@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ContactsUI/ContactsUI.h>
 #import <Contacts/Contacts.h>
+#import <LocalAuthentication/LocalAuthentication.h>
 #import "Macro.h"
 
 @interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureMetadataOutputObjectsDelegate,CNContactPickerDelegate>
@@ -153,7 +154,9 @@
         NSArray *arrmediatypes=[NSArray arrayWithObject:requiredmediatype];
         [picker setMediaTypes:arrmediatypes];
         
-        [[self currentViewController] presentViewController:picker animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[self currentViewController] presentViewController:picker animated:YES completion:nil];
+        });
     }
     else{
         //提示语
@@ -318,7 +321,9 @@
                 CNContactPickerViewController *contactControl = [[CNContactPickerViewController alloc] init];
                 // 2.设置代理
                 contactControl.delegate = self;
-                [[self currentViewController] presentViewController:contactControl animated:YES completion:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[self currentViewController] presentViewController:contactControl animated:YES completion:nil];
+                });
             }
             else
             {
@@ -364,5 +369,40 @@
     }
 }
 
++ (void)authenticationUser:(void (^)(void))successBlock
+                   failure:(void (^)(void))failureBlock;
+{
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    NSString *myLocalizedReasonString = @"We need to verify your fingerprint to confirm your identity";
+    
+    // 判断设备是否支持指纹识别
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        // 指纹识别只判断当前用户是否机主
+        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:myLocalizedReasonString reply:^(BOOL success, NSError * _Nullable error) {
+            if (success) {
+                // User authenticated successfully, take appropriate action
+                ML_LOG(@"指纹认证成功");
+                successBlock();
+            } else {
+                // User did not authenticate successfully, look at error and take appropriate action
+                ML_LOG(@"指纹认证失败，%@",error.description);
+                // 错误码 error.code
+                // -1: 连续三次指纹识别错误
+                // -2: 在TouchID对话框中点击了取消按钮
+                // -3: 在TouchID对话框中点击了输入密码按钮
+                // -4: TouchID对话框被系统取消，例如按下Home或者电源键
+                // -8: 连续五次指纹识别错误，TouchID功能被锁定，下一次需要输入系统密码
+                failureBlock();
+            }
+        }];
+    } else {
+        // Could not evaluate policy; look at authError and present an appropriate message to user
+        ML_LOG(@"TouchID设备不可用");
+        // TouchID没有设置指纹
+        // 关闭密码（系统如果没有设置密码TouchID无法启用）
+        failureBlock();
+    }
+}
 
 @end

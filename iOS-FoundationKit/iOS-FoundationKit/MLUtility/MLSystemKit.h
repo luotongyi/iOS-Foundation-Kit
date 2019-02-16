@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
 
 /**
  *  @brief 系统默认功能集合
- *  包括：拍照、定位、推送注册、二维码扫描、通讯录
+ *  包括：拍照、定位、推送注册、二维码扫描、通讯录、指纹功能
  *  所有涉及到系统功能的都需要在plist文件里配置对应权限
  **/
 @interface MLSystemKit : NSObject
@@ -81,5 +81,10 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
  */
 @property (nonatomic, copy  )   void (^selectContactBlock)(NSDictionary *contact);
 
+/**
+ *  @brief 验证用户指纹
+ */
++ (void)authenticationUser:(void (^)(void))successBlock
+                   failure:(void (^)(void))failureBlock;
 
 @end

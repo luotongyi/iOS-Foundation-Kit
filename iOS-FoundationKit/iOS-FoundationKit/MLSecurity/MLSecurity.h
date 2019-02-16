@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  @brief 加解密相关内容
+ */
 @interface MLSecurity : NSObject
 
 @end
