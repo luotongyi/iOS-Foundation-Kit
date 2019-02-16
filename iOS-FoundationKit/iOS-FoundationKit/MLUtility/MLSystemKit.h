@@ -12,14 +12,15 @@
 
 typedef NS_ENUM(NSUInteger, MLSystemType) {
     
-    MLSystem_Camera = 0,        //相机功能
-    MLSystem_Location,         //定位功能
+    MLSystem_Camera = 0,        //相机、相册功能
+    MLSystem_Location,          //定位功能，初始化location
     MLSystem_QRCode,            //二维码
+    MLSystem_Contact,           //通讯录
 };
 
 /**
  *  @brief 系统默认功能集合
- *  包括：拍照、定位、推送注册、二维码扫描
+ *  包括：拍照、定位、推送注册、二维码扫描、通讯录
  *  所有涉及到系统功能的都需要在plist文件里配置对应权限
  **/
 @interface MLSystemKit : NSObject
@@ -55,7 +56,7 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
 /**
  *  @brief 需要先调用此block，再执行startCamera
  */
-@property (nonatomic, copy  )   void (^completeHandle)(NSString *qrCode);
+@property (nonatomic, copy  )   void (^QRHandleBlock)(NSString *qrCode);
 
 /**
  *  @brief 开始扫描二维码
@@ -68,6 +69,17 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
  *  @brief 停止扫描
  */
 - (void)stopCamera;
+
+/**
+ *  @brief 打开系统通讯录
+ */
+- (void)openContact;
+
+/**
+ *  @brief 获取点击某个联系人之后的信息
+ *  eg. @{@"name":name,@"phones":phones}
+ */
+@property (nonatomic, copy  )   void (^selectContactBlock)(NSDictionary *contact);
 
 
 @end

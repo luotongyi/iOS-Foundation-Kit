@@ -9,9 +9,11 @@
 #import "MLSystemKit.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
+#import <ContactsUI/ContactsUI.h>
+#import <Contacts/Contacts.h>
 #import "Macro.h"
 
-@interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureMetadataOutputObjectsDelegate>
+@interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureMetadataOutputObjectsDelegate,CNContactPickerDelegate>
 {
     CLLocationManager           *_locationManager;              //!< 定位管理器
     CLLocationCoordinate2D      _coordinate;                    //!< 当前经纬度
@@ -47,6 +49,7 @@
                 break;
             case MLSystem_Camera:
             case MLSystem_QRCode:
+            case MLSystem_Contact:
             default:
                 break;
         }
@@ -129,23 +132,15 @@
 }
 
 #pragma -mark 选择照片
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    
-    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    if ([mediaType isEqualToString:@"public.image"]){
-        UIImage *image = [[info objectForKey:UIImagePickerControllerOriginalImage] copy];
-        
-        ML_LOG(@"照片图片：%@",image);
-        if (_imagePickerBlock) {
-            _imagePickerBlock(image);
-        }
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)getMediaFromSource:(UIImagePickerControllerSourceType)sourceType
 {
+    NSString *mediaType = AVMediaTypeVideo;//读取媒体类型
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];//读取设备授权状态
+    if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+        ML_LOG(@"%@",@"请打开相机权限");
+        return;
+    }
+    
     NSArray *mediatypes=[UIImagePickerController availableMediaTypesForSourceType:sourceType];
     if([UIImagePickerController isSourceTypeAvailable:sourceType] &&[mediatypes count]>0){
         NSArray *mediatypes=[UIImagePickerController availableMediaTypesForSourceType:sourceType];
@@ -163,6 +158,21 @@
     else{
         //提示语
     }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:@"public.image"]){
+        UIImage *image = [[info objectForKey:UIImagePickerControllerOriginalImage] copy];
+        
+        ML_LOG(@"照片图片：%@",image);
+        if (_imagePickerBlock) {
+            _imagePickerBlock(image);
+        }
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - private
@@ -281,8 +291,76 @@
 - (void)operate:(NSString *)symbolStr{
     [_session stopRunning];
     //扫描结果
-    if (_completeHandle) {
-        _completeHandle(symbolStr);
+    if (_QRHandleBlock) {
+        _QRHandleBlock(symbolStr);
+    }
+}
+
+#pragma -mark 通讯录
+- (void)openContact
+{
+    // 获得通讯录的授权状态
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    // 判断当前的授权状态
+    if (status != CNAuthorizationStatusAuthorized)
+    {
+        ML_LOG(@"您的通讯录暂未允许访问，请去设置->隐私里面授权!");
+        return;
+    }
+    // 判断当前的授权状态是否是用户还未选择的状态
+    if (status == CNAuthorizationStatusNotDetermined)
+    {
+        CNContactStore *store = [CNContactStore new];
+        [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted)
+            {
+                // 1.创建选择联系人的控制器
+                CNContactPickerViewController *contactControl = [[CNContactPickerViewController alloc] init];
+                // 2.设置代理
+                contactControl.delegate = self;
+                [[self currentViewController] presentViewController:contactControl animated:YES completion:nil];
+            }
+            else
+            {
+                ML_LOG(@"授权失败!");
+            }
+        }];
+    }
+}
+- (void)contactPickerDidCancel:(CNContactPickerViewController *)picker
+{
+    ML_LOG(@"%@",@"取消选择联系人");
+}
+// 2.当选中某一个联系人时会执行该方法
+- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact
+{
+    // 1.获取联系人的姓名
+    NSString *lastname = contact.familyName;
+    NSString *firstname = contact.givenName;
+    NSString *name = [NSString stringWithFormat:@"%@%@",lastname,firstname];
+    ML_LOG(@"%@ %@", lastname, firstname);
+    
+    // 2.获取联系人的电话号码(此处获取的是该联系人的第一个号码,也可以遍历所有的号码)
+    NSArray *phoneNums = contact.phoneNumbers;
+    
+    NSMutableArray *phones = [[NSMutableArray alloc]init];
+    for (int i=0; i<phoneNums.count; i++) {
+        CNLabeledValue *labeledValue = phoneNums[i];
+        CNPhoneNumber *phoneNumer = labeledValue.value;
+        NSString *phoneNumber = phoneNumer.stringValue;
+        ML_LOG(@"%@", phoneNumber);
+        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+        if ([phoneNumber hasPrefix:@"+86"]) {
+            phoneNumber = [phoneNumber substringFromIndex:4];
+        }
+        [phones addObject:phoneNumber];
+    }
+    ML_LOG(@"%@",phones);
+    
+    NSDictionary *dict = @{@"name":name,@"phones":phones};
+    if (_selectContactBlock) {
+        _selectContactBlock(dict);
     }
 }
 
