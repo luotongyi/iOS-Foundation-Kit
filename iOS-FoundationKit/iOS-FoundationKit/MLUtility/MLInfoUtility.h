@@ -71,8 +71,13 @@
  *  objKey      存储obj的key
  *  @return     返回归档的数据，包括数组、字典，如果没有，则返回 @"";
  **/
-+ (id)readFile:(NSString *)fileName
-        objKey:(NSString *)objKey;
++ (id)readFile:(NSString *)fileName objKey:(NSString *)objKey;
 
+/**
+ *  @brief 获取系统当前时间
+ *  format 时间格式，默认（nil、@""）：YYYY-MM-dd HH:mm:ss
+ *  @return     按照格式返回时间
+ **/
++ (NSString *)getCurrentTime:(NSString *)format;
 
 @end

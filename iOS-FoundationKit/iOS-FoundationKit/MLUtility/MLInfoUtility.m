@@ -190,5 +190,16 @@
     }
 }
 
++ (NSString *)getCurrentTime:(NSString *)format
+{
+    if (!format || [format isEqualToString:@""]) {
+       format = @"YYYY-MM-dd HH:mm:ss";
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    
+    return dateTime;
+}
 
 @end
