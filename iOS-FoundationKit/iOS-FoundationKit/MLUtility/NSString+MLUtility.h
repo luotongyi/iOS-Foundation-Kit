@@ -45,5 +45,30 @@
 - (CGSize)MLSizeFormat:(UIFont *)font
                maxWith:(CGFloat)width;
 
+/**
+ 从data获取16进制字符串
+ 
+ @param data 二进制数据
+ @return 16进制字符串
+ */
++ (NSString *)hexStringFromData:(NSData *)data;
+
+/**
+ 将普通字符串转换成16进制字符串
+ 
+ @param plainText 字符串
+ @return 16进制字符串
+ */
++ (NSString *)hexStringFromString:(NSString *)plainText;
+
+
+/**
+ 16进制字符串转换成data
+ 
+ @param hexString 16进制字符串
+ @return data 二进制数据
+ */
++ (NSData *)dataFromHexString:(NSString *)hexString;
+
 
 @end

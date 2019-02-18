@@ -9,10 +9,13 @@
 #ifndef Macro_h
 #define Macro_h
 
+//获取screen的宽度和高度
+#define ML_SCREEN_WIDTH               CGRectGetWidth([[UIScreen mainScreen] bounds])
+#define ML_SCREEN_HEIGHT              CGRectGetHeight([[UIScreen mainScreen] bounds])
 //正常字体
-#define KFONT(x)                    [UIFont systemFontOfSize:x]
+#define ML_FONT(x)                    [UIFont systemFontOfSize:x]
 //加粗字体
-#define KBOLD_FONT(x)               [UIFont boldSystemFontOfSize:x]
+#define ML_BOLD_FONT(x)               [UIFont boldSystemFontOfSize:x]
 
 //weakSelf 一般在block里面使用
 #define ML_WEAK_SELF(weakSelf)      __weak __typeof(&*self)weakSelf = self;

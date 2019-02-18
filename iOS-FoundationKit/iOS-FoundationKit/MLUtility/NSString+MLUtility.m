@@ -50,5 +50,39 @@
     return size;
 }
 
++ (NSString *)hexStringFromData:(NSData *)data
+{
+    if (!data) {
+        return nil;
+    }
+    Byte *bytes = (Byte *)[data bytes];
+    NSMutableString *hexStr = [NSMutableString stringWithCapacity:data.length*2];
+    for (int i=0;i<[data length];i++) {
+        [hexStr appendFormat:@"%02X",bytes[i]];
+    }
+    return [hexStr lowercaseString];
+}
+
++ (NSString *)hexStringFromString:(NSString *)plainText
+{
+    NSData *myD = [plainText dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *hexStr = [self hexStringFromData:myD];
+    return hexStr;
+}
+
++ (NSData *)dataFromHexString:(NSString *)hexString
+{
+    char *myBuffer = (char *)malloc((int)[hexString length] / 2 + 1);
+    bzero(myBuffer, [hexString length] / 2 + 1);
+    for (int i = 0; i < [hexString length] - 1; i += 2) {
+        unsigned int anInt;
+        NSString *hexCharStr = [hexString substringWithRange:NSMakeRange(i, 2)];
+        NSScanner *scanner = [[NSScanner alloc] initWithString:hexCharStr];
+        [scanner scanHexInt:&anInt];
+        myBuffer[i/2] = (char)anInt;
+    }
+    NSData *data = [NSData dataWithBytes:myBuffer length:hexString.length/2];
+    return data;
+}
 
 @end
