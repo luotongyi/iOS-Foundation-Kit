@@ -7,6 +7,7 @@
 //
 
 #import "NSString+MLUtility.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (MLUtility)
 
@@ -68,6 +69,20 @@
     NSData *myD = [plainText dataUsingEncoding:NSUTF8StringEncoding];
     NSString *hexStr = [self hexStringFromData:myD];
     return hexStr;
+}
+
++ (NSString *)md5:(NSString *)input
+{
+    const char *original_str = [input UTF8String];
+    unsigned char outputData[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, (CC_LONG)strlen(original_str), outputData);
+    
+    NSMutableString *hash = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++){
+        [hash appendFormat:@"%02X", outputData[i]];
+    }
+    return [hash lowercaseString];
 }
 
 + (NSData *)dataFromHexString:(NSString *)hexString
