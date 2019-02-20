@@ -16,6 +16,7 @@
 		B91280BA221573DF004EC2E9 /* MLTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280B9221573DF004EC2E9 /* MLTipsView.m */; };
 		B91280C12215762E004EC2E9 /* MLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280C02215762E004EC2E9 /* MLSecurity.m */; };
 		B92061D72216E458006E93B5 /* MLAFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B92061D62216E458006E93B5 /* MLAFHTTPRequest.m */; };
+		B9547D70221BF51D003F87A7 /* MLUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9547D6E221BF51D003F87A7 /* MLUpdate.m */; };
 		B95B6559220181D9006EC636 /* MLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B6558220181D9006EC636 /* MLWebView.m */; };
 		B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B655D2201893A006EC636 /* MLRequestItem.m */; };
 		B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656022018B3E006EC636 /* MLHTTPRequest.m */; };
@@ -59,6 +60,8 @@
 		B91280C02215762E004EC2E9 /* MLSecurity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLSecurity.m; sourceTree = "<group>"; };
 		B92061D52216E458006E93B5 /* MLAFHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLAFHTTPRequest.h; sourceTree = "<group>"; };
 		B92061D62216E458006E93B5 /* MLAFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLAFHTTPRequest.m; sourceTree = "<group>"; };
+		B9547D6E221BF51D003F87A7 /* MLUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLUpdate.m; sourceTree = "<group>"; };
+		B9547D6F221BF51D003F87A7 /* MLUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLUpdate.h; sourceTree = "<group>"; };
 		B95B6557220181D9006EC636 /* MLWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebView.h; sourceTree = "<group>"; };
 		B95B6558220181D9006EC636 /* MLWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebView.m; sourceTree = "<group>"; };
 		B95B655A220184D6006EC636 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				B91280AD22156590004EC2E9 /* NSString+MLUtility.m */,
 				B91280B5221567EB004EC2E9 /* MLSystemKit.h */,
 				B91280B6221567EB004EC2E9 /* MLSystemKit.m */,
+				B9547D6F221BF51D003F87A7 /* MLUpdate.h */,
+				B9547D6E221BF51D003F87A7 /* MLUpdate.m */,
 			);
 			path = MLUtility;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				B99B60D12202A1FC00B7D1DA /* MLAnalyse.m in Sources */,
 				B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */,
 				B95B656B22019F11006EC636 /* UINavigationController+MLHook.m in Sources */,
+				B9547D70221BF51D003F87A7 /* MLUpdate.m in Sources */,
 				B91280B7221567EB004EC2E9 /* MLSystemKit.m in Sources */,
 				B95B656F2201A177006EC636 /* MLStatisticsAPI.m in Sources */,
 				B92061D72216E458006E93B5 /* MLAFHTTPRequest.m in Sources */,
