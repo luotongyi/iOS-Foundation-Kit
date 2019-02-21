@@ -105,7 +105,6 @@ static NSData *base64_decode(NSString *str){
     return keyRef;
 }
 
-
 + (NSData *)stripPublicKeyHeader:(NSData *)d_key{
     // Skip ASN.1 public key header
     if (d_key == nil) return(nil);
@@ -173,7 +172,6 @@ static NSData *base64_decode(NSString *str){
             [ret appendBytes:outbuf length:outlen];
         }
     }
-    
     free(outbuf);
     CFRelease(keyRef);
     return ret;
@@ -181,12 +179,10 @@ static NSData *base64_decode(NSString *str){
 
 #pragma -mark 3DES加解密
 //字符串加密
--(NSString *)threeDESEncryptStr:(NSString *)originalStr cryptKey:(NSString *)cryptKey
++ (NSString *)threeDESEncryptStr:(NSString *)originalStr cryptKey:(NSString *)cryptKey
 {
-    
     //把string 转NSData
     NSData* data = [originalStr dataUsingEncoding:NSUTF8StringEncoding];
-    
     //length
     size_t plainTextBufferSize = [data length];
     
@@ -204,7 +200,6 @@ static NSData *base64_decode(NSString *str){
     const void *vkey = (const void *)[cryptKey UTF8String];
     //    //偏移量
     //    const void *vinitVec =  nil;
-    
     //配置CCCrypt
     ccStatus = CCCrypt(kCCEncrypt,
                        kCCAlgorithm3DES, //3DES
@@ -224,11 +219,9 @@ static NSData *base64_decode(NSString *str){
     return result;
 }
 
-
 //字符串解密
--(NSString*)threeDESDecryptStr:(NSString *)encryptStr cryptKey:(NSString *)cryptKey
++ (NSString*)threeDESDecryptStr:(NSString *)encryptStr cryptKey:(NSString *)cryptKey
 {
-    
 //    NSData *encryptData = [GTMBase64 decodeData:[encryptStr dataUsingEncoding:NSUTF8StringEncoding]];
     NSData *encryptData = base64_decode(encryptStr);
     
@@ -245,9 +238,7 @@ static NSData *base64_decode(NSString *str){
     memset((void *)bufferPtr, 0x0, bufferPtrSize);
     
     const void *vkey = (const void *) [cryptKey UTF8String];
-    
     //    const void *vinitVec = (const void *) [gIv UTF8String];
-    
     ccStatus = CCCrypt(kCCDecrypt,
                        kCCAlgorithm3DES,
                        kCCOptionPKCS7Padding,
@@ -262,9 +253,23 @@ static NSData *base64_decode(NSString *str){
     
     NSString *result = [[NSString alloc] initWithData:[NSData dataWithBytes:(const void *)bufferPtr
                                                                      length:(NSUInteger)movedBytes] encoding:NSUTF8StringEncoding];
-    
-    
     return result;
 }
+
+
++ (NSString *)MD5:(NSString *)input
+{
+    const char *original_str = [input UTF8String];
+    unsigned char outputData[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, (CC_LONG)strlen(original_str), outputData);
+    
+    NSMutableString *hash = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++){
+        [hash appendFormat:@"%02X", outputData[i]];
+    }
+    return [hash lowercaseString];
+}
+
 
 @end

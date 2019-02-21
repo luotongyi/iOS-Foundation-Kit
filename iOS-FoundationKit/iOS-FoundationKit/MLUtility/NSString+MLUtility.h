@@ -62,14 +62,6 @@
 + (NSString *)hexStringFromString:(NSString *)plainText;
 
 /**
- 将普通字符进行MD5转换
- 
- @param input 字符串
- @return MD5后的字符串
- */
-+ (NSString *)MD5:(NSString *)input;
-
-/**
  16进制字符串转换成data
  
  @param hexString 16进制字符串

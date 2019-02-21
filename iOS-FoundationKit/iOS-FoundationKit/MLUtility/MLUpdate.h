@@ -26,7 +26,7 @@
 /**
  *  @brief 版本更新的内容，默认@""
  */
-@property (nonatomic, copy  )   NSString *updateMsg;
+@property (nonatomic, copy  )   NSString *updateInfo;
 
 /**
  *  @brief App Store显示的版本号，默认@""
@@ -40,6 +40,12 @@
  */
 @property (nonatomic, copy  )   NSString *version;
 
+/**
+ *  @brief 是否是灰度环境，默认NO
+ */
+@property (nonatomic, assign)   BOOL     isGrayVersion;
+
+
 @end
 
 /**
@@ -47,6 +53,11 @@
  */
 @interface MLUpdate : NSObject
 
-+ (void)updateApp;
+@property (nonatomic, copy  )   void(^cancelUpdateBlock)(void);
+
+/**
+ *  @brief 执行版本更新逻辑
+ */
+- (void)appUpdateCheck;
 
 @end

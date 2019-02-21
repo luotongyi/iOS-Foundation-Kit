@@ -26,7 +26,7 @@
  *  @param originalStr    需要加密的字符串
  *  @param cryptKey      字符串Key
  */
--(NSString *)threeDESEncryptStr:(NSString *)originalStr
++ (NSString *)threeDESEncryptStr:(NSString *)originalStr
                        cryptKey:(NSString *)cryptKey;
 
 /**
@@ -34,7 +34,15 @@
  *  @param encryptStr    需要解密的字符串
  *  @param cryptKey      字符串Key
  */
--(NSString*)threeDESDecryptStr:(NSString *)encryptStr
++ (NSString*)threeDESDecryptStr:(NSString *)encryptStr
                       cryptKey:(NSString *)cryptKey;
+
+/**
+ 将普通字符进行MD5转换
+ @param input 字符串
+ @return MD5后的字符串
+ */
++ (NSString *)MD5:(NSString *)input;
+
 
 @end
