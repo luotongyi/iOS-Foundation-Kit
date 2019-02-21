@@ -22,7 +22,7 @@
         _updateUrl = @"";
         _version = @"";
         _bundleVersion = @"";
-        _forceUpdate = @"";
+        _forceUpdate = NO;
         _isGrayVersion = NO;
     }
     return self;

@@ -14,9 +14,9 @@
 @interface MLUpdateModel : NSObject
 
 /**
- *  @brief 是否强制更新，默认@""
+ *  @brief 是否强制更新，默认NO
  */
-@property (nonatomic, copy  )   NSString *forceUpdate;
+@property (nonatomic, assign)   BOOL     forceUpdate;
 
 /**
  *  @brief 版本更新后的下载地址，默认@""
