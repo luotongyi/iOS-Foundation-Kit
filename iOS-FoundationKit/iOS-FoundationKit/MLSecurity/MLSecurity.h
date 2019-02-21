@@ -25,14 +25,16 @@
  *  3DES加密方法
  *  @param originalStr    需要加密的字符串
  *  @param cryptKey      字符串Key
+ *  return 经过base64转换的string
  */
 + (NSString *)threeDESEncryptStr:(NSString *)originalStr
                        cryptKey:(NSString *)cryptKey;
 
 /**
  *  3DES解密方法
- *  @param encryptStr    需要解密的字符串
+ *  @param encryptStr    需要解密的（经过base64转换的string）字符串
  *  @param cryptKey      字符串Key
+ *  return 解密后的string
  */
 + (NSString*)threeDESDecryptStr:(NSString *)encryptStr
                       cryptKey:(NSString *)cryptKey;
