@@ -80,4 +80,16 @@
  **/
 + (NSString *)getCurrentTime:(NSString *)format;
 
+/**
+ *  @brief 获取当前显示的ViewController
+ *  @return   当前的ViewController
+ **/
++ (UIViewController *)getCurrentViewController;
+
+/**
+ *  @brief 根据当前view获取ViewController
+ *  @return   当前的ViewController
+ **/
++ (UIViewController *)findViewController:(UIView *)view;
+
 @end

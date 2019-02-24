@@ -202,4 +202,44 @@
     return dateTime;
 }
 
++ (UIViewController *)getCurrentViewController
+{
+    UIViewController *result;
+    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
+    if (topWindow.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *topWin in windows)
+        {
+            if (topWin.windowLevel == UIWindowLevelNormal)
+                topWindow = topWin;
+            break;
+        }
+    }
+    
+    result = topWindow.rootViewController;
+    while (result.presentedViewController) {
+        result = result.presentedViewController;
+    }
+    if ([result isKindOfClass:[UITabBarController class]]) {
+        result = [(UITabBarController *)result selectedViewController];
+    }
+    if ([result isKindOfClass:[UINavigationController class]]) {
+        result = [(UINavigationController *)result visibleViewController];
+    }
+    
+    return result;
+}
+
++ (UIViewController *)findViewController:(UIView *)view
+{
+    id target = view;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]])
+            break;
+    }
+    return target;
+}
+
 @end

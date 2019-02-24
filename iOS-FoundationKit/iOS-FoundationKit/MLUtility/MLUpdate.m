@@ -8,6 +8,7 @@
 
 #import "MLUpdate.h"
 #import <UIKit/UIKit.h>
+#import "MLInfoUtility.h"
 
 /**
  *  @brief 版本更新字典Model
@@ -57,7 +58,7 @@
         }];
         [alert addAction:cancelAction];
         [alert addAction:okAction];
-        [ [self currentViewController] presentViewController:alert animated:YES completion:nil];
+        [ [MLInfoUtility getCurrentViewController] presentViewController:alert animated:YES completion:nil];
     }
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:model.updateInfo preferredStyle:UIAlertControllerStyleAlert];
@@ -74,52 +75,8 @@
         }];
         [alert addAction:cancelAction];
         [alert addAction:okAction];
-        [ [self currentViewController] presentViewController:alert animated:YES completion:nil];
+        [ [MLInfoUtility getCurrentViewController] presentViewController:alert animated:YES completion:nil];
     }
-}
-
-
-#pragma mark - private
-- (UIViewController *)rootViewController
-{
-    UIViewController *result;
-    // Try to find the root view controller programmically
-    // Find the top window (that is not an alert view or other window)
-    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-    if (topWindow.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(topWindow in windows)
-        {
-            if (topWindow.windowLevel == UIWindowLevelNormal)
-                break;
-        }
-    }
-    
-    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
-    id nextResponder = [rootView nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-    {
-        result = nextResponder;
-    }
-    else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil)
-    {
-        result = topWindow.rootViewController;
-    }
-    else
-    {
-    }
-    return result;
-}
-
-- (UIViewController*)currentViewController
-{
-    UIViewController *controller = [self rootViewController];
-    
-    while (controller.presentedViewController) {
-        controller = controller.presentedViewController;
-    }
-    return controller;
 }
 
 @end

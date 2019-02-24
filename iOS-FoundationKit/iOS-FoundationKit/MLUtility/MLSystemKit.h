@@ -28,6 +28,17 @@ typedef NS_ENUM(NSUInteger, MLSystemType) {
 + (void)registeNotification;
 
 /**
+ *  @brief 成功注册推送，获取token
+ *  token，推送token，eg. <adfs dfsf fasd ...>
+ */
++ (void)successRegisteToken:(NSData *)deviceToken;
+
+/**
+ *  @brief 获取token失败
+ */
++ (void)failRegisteToken;
+
+/**
  *  @brief 初始化类
  *  MLSystem_Location时需要开启定位初始化，其他情况默认不处理
  */

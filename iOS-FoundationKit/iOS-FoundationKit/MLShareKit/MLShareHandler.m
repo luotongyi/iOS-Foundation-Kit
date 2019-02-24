@@ -617,49 +617,6 @@
     }
 }
 
-#pragma mark - private
-- (UIViewController *)rootViewController
-{
-    UIViewController *result;
-    // Try to find the root view controller programmically
-    // Find the top window (that is not an alert view or other window)
-    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-    if (topWindow.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(topWindow in windows)
-        {
-            if (topWindow.windowLevel == UIWindowLevelNormal)
-                break;
-        }
-    }
-    
-    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
-    id nextResponder = [rootView nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-    {
-        result = nextResponder;
-    }
-    else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil)
-    {
-        result = topWindow.rootViewController;
-    }
-    else
-    {
-    }
-    return result;
-}
-
-- (UIViewController*)currentViewController
-{
-    UIViewController *controller = [self rootViewController];
-    
-    while (controller.presentedViewController) {
-        controller = controller.presentedViewController;
-    }
-    return controller;
-}
-
 - (NSString *) localMAC{
     
     int                 mib[6];

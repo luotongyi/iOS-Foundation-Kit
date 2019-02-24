@@ -8,6 +8,7 @@
 
 #import "MLWebView.h"
 #import "Macro.h"
+#import "MLInfoUtility.h"
 
 @interface MLWebView()<WKNavigationDelegate,WKScriptMessageHandler>
 {
@@ -121,7 +122,16 @@
 #pragma mark - WKWebview
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    decisionHandler(WKNavigationActionPolicyAllow);
+    NSString *urlString = navigationAction.request.URL.absoluteString;
+    if (![urlString hasPrefix:@"http"]) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:navigationAction.request.URL.absoluteString]];
+        });
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+    else{
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
@@ -172,23 +182,12 @@
     _loadingView.hidden = YES;
 }
 
-- (UIViewController *)findViewController
-{
-    id target=self;
-    while (target) {
-        target = ((UIResponder *)target).nextResponder;
-        if ([target isKindOfClass:[UIViewController class]])
-            break;
-    }
-    return target;
-}
-
 - (void)popViewController{
-    [[self findViewController].navigationController popViewControllerAnimated:YES];
+    [[MLInfoUtility findViewController:self].navigationController popViewControllerAnimated:YES];
 }
 
 - (void)popRootViewController{
-    [[self findViewController].navigationController popToRootViewControllerAnimated:YES];
+    [[MLInfoUtility findViewController:self].navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)goWebHistory{

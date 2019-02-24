@@ -13,6 +13,7 @@
 #import <Contacts/Contacts.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "Macro.h"
+#import "MLInfoUtility.h"
 
 @interface MLSystemKit()<CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureMetadataOutputObjectsDelegate,CNContactPickerDelegate>
 {
@@ -33,6 +34,24 @@
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     //申请使用通知
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
++ (void)successRegisteToken:(NSData *)deviceToken
+{
+    NSString *token = [NSString stringWithFormat:@"%@",deviceToken];
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+#warning token获取成功处理
+    
+    
+}
+
++ (void)failRegisteToken
+{
+#warning token获取失败处理
+    
+    
 }
 
 #pragma -mark 定位功能
@@ -155,7 +174,7 @@
         [picker setMediaTypes:arrmediatypes];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[self currentViewController] presentViewController:picker animated:YES completion:nil];
+            [[MLInfoUtility getCurrentViewController] presentViewController:picker animated:YES completion:nil];
         });
     }
     else{
@@ -176,49 +195,6 @@
         }
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - private
-- (UIViewController *)rootViewController
-{
-    UIViewController *result;
-    // Try to find the root view controller programmically
-    // Find the top window (that is not an alert view or other window)
-    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-    if (topWindow.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(topWindow in windows)
-        {
-            if (topWindow.windowLevel == UIWindowLevelNormal)
-                break;
-        }
-    }
-    
-    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
-    id nextResponder = [rootView nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-    {
-        result = nextResponder;
-    }
-    else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil)
-    {
-        result = topWindow.rootViewController;
-    }
-    else
-    {
-    }
-    return result;
-}
- 
-- (UIViewController*)currentViewController
-{
-    UIViewController *controller = [self rootViewController];
-    
-    while (controller.presentedViewController) {
-        controller = controller.presentedViewController;
-    }
-    return controller;
 }
 
 #pragma -mark 二维码扫描
@@ -322,7 +298,7 @@
                 // 2.设置代理
                 contactControl.delegate = self;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [[self currentViewController] presentViewController:contactControl animated:YES completion:nil];
+                    [[MLInfoUtility getCurrentViewController] presentViewController:contactControl animated:YES completion:nil];
                 });
             }
             else

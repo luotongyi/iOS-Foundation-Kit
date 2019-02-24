@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MLStatisticsAPI.h"
-
+#import "MLSystemKit.h"
 #import "UIViewController+MLHook.h"
 #import "UIApplication+MLHook.h"
 
@@ -29,10 +29,26 @@
     [UIApplication hookApplication];
     [UIViewController hookViewController];
     
+    [MLSystemKit registeNotification];
     
     return YES;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [MLSystemKit successRegisteToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    [MLSystemKit failRegisteToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
