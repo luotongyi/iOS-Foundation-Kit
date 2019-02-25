@@ -9,6 +9,8 @@
 #import "MLUpdate.h"
 #import <UIKit/UIKit.h>
 #import "MLInfoUtility.h"
+#import "Macro.h"
+#import "MLViewUtility.h"
 
 /**
  *  @brief 版本更新字典Model
@@ -40,42 +42,32 @@
 {
     MLUpdateModel *model = [MLUpdateModel new];
     
+    
     NSString *appVersion = @"1";
     if ([model.version integerValue] <= [appVersion integerValue]) {
         return;
     }
+    ML_WEAK_SELF(weakSelf)
     //需要更新版本
     if (model.forceUpdate) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:model.updateInfo preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [MLViewUtility alertController:@"发现新版本" message:model.updateInfo cancelTitle:@"退出" cancelBlcok:^{
             exit(0);
-        }];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        } comfirmTitle:@"更新" comfirmBlcok:^{
             //点击更新按钮,跳转到appstore
             [[UIApplication sharedApplication]openURL:[NSURL URLWithString:model.updateUrl]];
             exit(0);
         }];
-        [alert addAction:cancelAction];
-        [alert addAction:okAction];
-        [ [MLInfoUtility getCurrentViewController] presentViewController:alert animated:YES completion:nil];
     }
     else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:model.updateInfo preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            if (self->_cancelUpdateBlock) {
-                self->_cancelUpdateBlock();
+        [MLViewUtility alertController:@"发现新版本" message:model.updateInfo cancelTitle:@"取消" cancelBlcok:^{
+            if (weakSelf.cancelUpdateBlock) {
+                weakSelf.cancelUpdateBlock();
             }
-        }];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        } comfirmTitle:@"更新" comfirmBlcok:^{
             //点击更新按钮,跳转到appstore
             [[UIApplication sharedApplication]openURL:[NSURL URLWithString:model.updateUrl]];
             exit(0);
         }];
-        [alert addAction:cancelAction];
-        [alert addAction:okAction];
-        [ [MLInfoUtility getCurrentViewController] presentViewController:alert animated:YES completion:nil];
     }
 }
 

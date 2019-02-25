@@ -31,6 +31,21 @@
 + (UIImage *)stringConvertToImage:(NSString *)qrString
                              size:(CGFloat)rectSize;
 
+/**
+ *  @brief 显示一个、两个按钮的alert
+ *  title    alert的title
+ *  message  alert的内容
+ *  cancelTitle 取消按钮的title，可不传，
+ *              当取消按钮的title为nil、@""时，只显示确定按钮，cancelBlcok也不会执行
+ *  comfirmTitle    确定按钮的title，可不传，默认“确定”
+ **/
++ (void)alertController:(NSString *)title
+                message:(NSString *)message
+            cancelTitle:(NSString *)cancelTitle
+            cancelBlcok:(void (^)(void))cancelBlcok
+           comfirmTitle:(NSString *)comfirmTitle
+           comfirmBlcok:(void (^)(void))comfirmBlcok;
+
 
 
 @end
