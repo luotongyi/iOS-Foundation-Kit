@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 #import "MLStatisticsAPI.h"
 #import "MLSystemKit.h"
@@ -23,13 +24,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [MLStatisticsAPI setLogEnable:YES];
-    [MLStatisticsAPI registerKey:@"test"];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor lightGrayColor];
+    [self.window makeKeyAndVisible];
     
-    [UIApplication hookApplication];
-    [UIViewController hookViewController];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:[ViewController new]];
+//    nav.navigationBar.translucent = NO;
+    self.window.rootViewController = nav;
     
-    [MLSystemKit registeNotification];
+//    [MLStatisticsAPI setLogEnable:YES];
+//    [MLStatisticsAPI registerKey:@"test"];
+//
+//    [UIApplication hookApplication];
+//    [UIViewController hookViewController];
+//
+//    [MLSystemKit registeNotification];
     
     return YES;
 }

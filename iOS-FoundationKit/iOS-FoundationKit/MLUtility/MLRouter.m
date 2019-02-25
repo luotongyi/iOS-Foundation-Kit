@@ -30,13 +30,30 @@
 
 + (void)pushController:(NSString *)vcClassName params:(NSDictionary *)params
 {
-    UIViewController *control = [self controllerFromClassName:vcClassName];
-    if (!params) {
-        return;
+    UIViewController *controller = [self controllerFromClassName:vcClassName];
+    //类的参数
+    if (params) {
+//        control.params = params;
     }
     
-    [[MLInfoUtility getCurrentViewController].navigationController pushViewController:control animated:YES];
-    
+    [[MLInfoUtility getCurrentViewController].navigationController pushViewController:controller animated:YES];
+}
+
++ (void)pushWebController:(NSString *)url
+{
+//    UIViewController *controller = [UIViewController new];
+//    controller.url = url;
+//    [[MLInfoUtility getCurrentViewController].navigationController pushViewController:controller animated:YES];
+}
+
++ (void)popController
+{
+    [[MLInfoUtility getCurrentViewController].navigationController popViewControllerAnimated:YES];
+}
+
++ (void)popRootController
+{
+    [[MLInfoUtility getCurrentViewController].navigationController popToRootViewControllerAnimated:YES];
 }
 
 

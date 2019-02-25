@@ -25,7 +25,9 @@
 #define dispatch_main_async_ml(block) dispatch_queue_async_ml(dispatch_get_main_queue(), block)
 #endif
 
-#if TARGET_IPHONE_SIMULATOR
+
+//#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE
 @interface MLShareHandler ()<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>
 #else
 @interface MLShareHandler ()<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate,WXApiDelegate,WeiboSDKDelegate,QQApiInterfaceDelegate>
@@ -44,7 +46,8 @@
     return instance;
 }
 
-#if TARGET_IPHONE_SIMULATOR
+//#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE
 #else
 + (BOOL)isInstalledApp:(MLShareType)shareType
 {

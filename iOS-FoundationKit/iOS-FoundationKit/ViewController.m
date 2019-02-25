@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "MLWebView.h"
+#import "MLWebController.h"
 #import "MLHTTPRequest.h"
 #import "MLInfoUtility.h"
 #import "MLSqliteModel.h"
@@ -43,19 +43,32 @@
     [self.view addSubview:btn];
 }
 
+#define ML_WEAK_SELF1(weakSelf1)(obj)        __weak __typeof(&*obj)weakSelf1 = obj;
+
 - (void)testLoadWeb
 {
-    MLWebView *bv = [[MLWebView alloc] initWithConfig:@[] frame:CGRectMake(0, 0, 200, 300)];
-    [self.view addSubview:bv];
-    bv.url = @"http://www.baidu.com";
-    [bv loadUrl];
+    MLWebController *controller = [MLWebController new];
+    __weak __typeof(&*controller)weakSelf = controller;
+    controller.jsNamesArray = @[@"name1",@"name2"];
+    [controller setJsCallNativeBlock:^(NSString *name, id body) {
+        if ([name isEqualToString:@"name1"]) {
+            [weakSelf handleJS:@""];
+        }
+        else{
+            
+        }
+    }];
+    [controller setEvaluateJSBlock:^(id response) {
+        
+    }];
+    controller.url = @"https://itunes.apple.com/cn/app//id847285955?mt=8";
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self testLoadWeb];
-    
 }
 
 - (void)testNetwork

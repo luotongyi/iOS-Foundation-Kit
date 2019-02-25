@@ -17,7 +17,6 @@
 		B91280C12215762E004EC2E9 /* MLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = B91280C02215762E004EC2E9 /* MLSecurity.m */; };
 		B92061D72216E458006E93B5 /* MLAFHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B92061D62216E458006E93B5 /* MLAFHTTPRequest.m */; };
 		B9547D70221BF51D003F87A7 /* MLUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9547D6E221BF51D003F87A7 /* MLUpdate.m */; };
-		B95B6559220181D9006EC636 /* MLWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B6558220181D9006EC636 /* MLWebView.m */; };
 		B95B655E2201893A006EC636 /* MLRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B655D2201893A006EC636 /* MLRequestItem.m */; };
 		B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656022018B3E006EC636 /* MLHTTPRequest.m */; };
 		B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B656422019696006EC636 /* UIApplication+MLHook.m */; };
@@ -27,6 +26,7 @@
 		B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */; };
 		B963C19F220D1CD5000F28A5 /* UIView+MLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */; };
 		B9641072221691E200EE9DF6 /* MLViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B9641071221691E200EE9DF6 /* MLViewUtility.m */; };
+		B972DF942223974E00CA7CAA /* MLWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B972DF932223974E00CA7CAA /* MLWebController.m */; };
 		B97BD88822225689002D7026 /* MLRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B97BD88722225689002D7026 /* MLRouter.m */; };
 		B99B60C5220290F000B7D1DA /* MLInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60C4220290F000B7D1DA /* MLInstance.m */; };
 		B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60CA22029E9A00B7D1DA /* MLCrashHandler.m */; };
@@ -34,7 +34,6 @@
 		B99B60D72202D37200B7D1DA /* MLSqliteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B99B60D62202D37200B7D1DA /* MLSqliteModel.m */; };
 		B9D2328021FEF97800562A5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2327F21FEF97800562A5D /* AppDelegate.m */; };
 		B9D2328321FEF97800562A5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328221FEF97800562A5D /* ViewController.m */; };
-		B9D2328621FEF97800562A5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328421FEF97800562A5D /* Main.storyboard */; };
 		B9D2328821FEF97900562A5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328721FEF97900562A5D /* Assets.xcassets */; };
 		B9D2328B21FEF97900562A5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328921FEF97900562A5D /* LaunchScreen.storyboard */; };
 		B9D2328E21FEF97900562A5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328D21FEF97900562A5D /* main.m */; };
@@ -63,8 +62,6 @@
 		B92061D62216E458006E93B5 /* MLAFHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLAFHTTPRequest.m; sourceTree = "<group>"; };
 		B9547D6E221BF51D003F87A7 /* MLUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLUpdate.m; sourceTree = "<group>"; };
 		B9547D6F221BF51D003F87A7 /* MLUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLUpdate.h; sourceTree = "<group>"; };
-		B95B6557220181D9006EC636 /* MLWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebView.h; sourceTree = "<group>"; };
-		B95B6558220181D9006EC636 /* MLWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebView.m; sourceTree = "<group>"; };
 		B95B655A220184D6006EC636 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		B95B655C2201893A006EC636 /* MLRequestItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLRequestItem.h; sourceTree = "<group>"; };
 		B95B655D2201893A006EC636 /* MLRequestItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLRequestItem.m; sourceTree = "<group>"; };
@@ -84,6 +81,8 @@
 		B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLFrame.m"; sourceTree = "<group>"; };
 		B9641070221691E200EE9DF6 /* MLViewUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLViewUtility.h; sourceTree = "<group>"; };
 		B9641071221691E200EE9DF6 /* MLViewUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLViewUtility.m; sourceTree = "<group>"; };
+		B972DF922223974E00CA7CAA /* MLWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebController.h; sourceTree = "<group>"; };
+		B972DF932223974E00CA7CAA /* MLWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebController.m; sourceTree = "<group>"; };
 		B97BD88622225689002D7026 /* MLRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLRouter.h; sourceTree = "<group>"; };
 		B97BD88722225689002D7026 /* MLRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLRouter.m; sourceTree = "<group>"; };
 		B99B60C3220290F000B7D1DA /* MLInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLInstance.h; sourceTree = "<group>"; };
@@ -99,7 +98,6 @@
 		B9D2327F21FEF97800562A5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B9D2328121FEF97800562A5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B9D2328221FEF97800562A5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B9D2328521FEF97800562A5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D2328721FEF97900562A5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D2328A21FEF97900562A5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D2328C21FEF97900562A5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,8 +144,8 @@
 		B95B65562201819D006EC636 /* MLViewKit */ = {
 			isa = PBXGroup;
 			children = (
-				B95B6557220181D9006EC636 /* MLWebView.h */,
-				B95B6558220181D9006EC636 /* MLWebView.m */,
+				B972DF922223974E00CA7CAA /* MLWebController.h */,
+				B972DF932223974E00CA7CAA /* MLWebController.m */,
 				B91280B8221573DF004EC2E9 /* MLTipsView.h */,
 				B91280B9221573DF004EC2E9 /* MLTipsView.m */,
 			);
@@ -255,7 +253,6 @@
 				B963C199220D17A4000F28A5 /* MLUtility */,
 				B95B65562201819D006EC636 /* MLViewKit */,
 				B95B655B2201890D006EC636 /* MLHTTP */,
-				B9D2328421FEF97800562A5D /* Main.storyboard */,
 				B9D2328721FEF97900562A5D /* Assets.xcassets */,
 				B9D2328921FEF97900562A5D /* LaunchScreen.storyboard */,
 				B9D2328C21FEF97900562A5D /* Info.plist */,
@@ -323,7 +320,6 @@
 			files = (
 				B9D2328B21FEF97900562A5D /* LaunchScreen.storyboard in Resources */,
 				B9D2328821FEF97900562A5D /* Assets.xcassets in Resources */,
-				B9D2328621FEF97800562A5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,11 +336,11 @@
 				B9547D70221BF51D003F87A7 /* MLUpdate.m in Sources */,
 				B91280B7221567EB004EC2E9 /* MLSystemKit.m in Sources */,
 				B95B656F2201A177006EC636 /* MLStatisticsAPI.m in Sources */,
+				B972DF942223974E00CA7CAA /* MLWebController.m in Sources */,
 				B92061D72216E458006E93B5 /* MLAFHTTPRequest.m in Sources */,
 				B91280A522155611004EC2E9 /* MLShareHandler.m in Sources */,
 				B91280B1221565CA004EC2E9 /* MLInfoUtility.m in Sources */,
 				B91280AE22156590004EC2E9 /* NSString+MLUtility.m in Sources */,
-				B95B6559220181D9006EC636 /* MLWebView.m in Sources */,
 				B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */,
 				B99B60D72202D37200B7D1DA /* MLSqliteModel.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
@@ -370,14 +366,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B9D2328421FEF97800562A5D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B9D2328521FEF97800562A5D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B9D2328921FEF97900562A5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
