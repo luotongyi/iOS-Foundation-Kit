@@ -24,38 +24,25 @@
 
 @implementation MLWebController
 
-- (void)errorHandler
+- (instancetype)init
 {
-    if (!_url) {
+    self = [super init];
+    if (self) {
         _url = @"";
-    }
-    if (!_userAgent) {
         _userAgent = @"";
-    }
-    if (!_jsNamesArray) {
         _jsNamesArray = @[];
-    }
-    if (!_headerParams) {
         _headerParams = @{};
     }
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self errorHandler];
     
     [self createWebView];
     [self createLoadingView];
     
     [self loadUrl];
-}
-
-- (void)setUrl:(NSString *)url
-{
-    NSString *urlString = [url stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    _url = urlString;
 }
 
 #pragma -mark 初始化wkWebView
@@ -87,6 +74,11 @@
 #pragma -mark web请求
 - (void)loadUrl
 {
+    NSString *urlString = [_url stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    _url = urlString;
+    
     if (_url && _url.length > 0)
     {
         webRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20];
@@ -227,14 +219,24 @@
 
 - (void)startLoading
 {
-    [_defaultLoadingView startAnimating];
-    _defaultLoadingView.hidden = NO;
+    if (!_loadingView) {
+        [_defaultLoadingView startAnimating];
+        _defaultLoadingView.hidden = NO;
+    }
+    else{
+        
+    }
 }
 
 - (void)stopLoding
 {
-    [_defaultLoadingView stopAnimating];
-    _defaultLoadingView.hidden = YES;
+    if (!_loadingView) {
+        [_defaultLoadingView stopAnimating];
+        _defaultLoadingView.hidden = YES;
+    }
+    else{
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

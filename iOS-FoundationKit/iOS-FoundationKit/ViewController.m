@@ -50,6 +50,7 @@
     MLWebController *controller = [MLWebController new];
     __weak __typeof(&*controller)weakSelf = controller;
     controller.jsNamesArray = @[@"name1",@"name2"];
+    
     [controller setJsCallNativeBlock:^(NSString *name, id body) {
         if ([name isEqualToString:@"name1"]) {
             [weakSelf handleJS:@""];

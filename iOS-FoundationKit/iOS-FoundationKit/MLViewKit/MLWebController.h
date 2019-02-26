@@ -65,8 +65,6 @@
 - (void)handleJS:(NSString *)js;
 
 
-
-
 @property (nonatomic, strong)   UIView *loadingFailView;
 
 @property (nonatomic, strong)   UIView *loadingView;
