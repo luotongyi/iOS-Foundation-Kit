@@ -111,7 +111,7 @@
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
             });
         }
-        decisionHandler(WKNavigationActionPolicyCancel);
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
     else{
         if (_pushNewPage) {
