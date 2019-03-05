@@ -14,6 +14,8 @@
 {
     NSMutableURLRequest *webRequest;
     WKWebViewConfiguration *wkConfig;
+    
+    NSMutableArray *jsArray;
 }
 
 @property (nonatomic, strong)   WKWebView *wkWebView;
@@ -32,12 +34,15 @@
         _userAgent = @"";
         _jsNamesArray = @[];
         _headerParams = @{};
+        
+        jsArray = [NSMutableArray arrayWithObjects:@"", nil];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [jsArray addObjectsFromArray:_jsNamesArray];
     
     [self createWebView];
     [self createLoadingView];
@@ -50,7 +55,7 @@
 {
     wkConfig = [[WKWebViewConfiguration alloc] init];
     WKUserContentController *userContentController = [[WKUserContentController alloc] init];
-    for (NSString *jsName in _jsNamesArray) {
+    for (NSString *jsName in jsArray) {
         [userContentController addScriptMessageHandler:self name:ML_STRING_FORMAT(jsName)];
     }
     wkConfig.userContentController = userContentController;
@@ -157,7 +162,7 @@
     ML_WEAK_SELF(weakSelf);
     MLWebController *controller = [MLWebController new];
     controller.url = actionUrl;
-    controller.jsNamesArray = [_jsNamesArray mutableCopy];
+    controller.jsNamesArray = [NSArray arrayWithArray:jsArray];
     controller.headerParams = [_headerParams mutableCopy];
     controller.userAgent = [_userAgent mutableCopy];
     controller.pushNewPage = _pushNewPage;
@@ -246,7 +251,7 @@
 
 - (void)dealloc
 {
-    for (NSString *jsName in _jsNamesArray) {
+    for (NSString *jsName in jsArray) {
         [wkConfig.userContentController removeScriptMessageHandlerForName:ML_STRING_FORMAT(jsName)];
     }
     _wkWebView.navigationDelegate = nil;

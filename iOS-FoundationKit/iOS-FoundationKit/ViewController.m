@@ -49,11 +49,20 @@
 {
     MLWebController *controller = [MLWebController new];
     __weak __typeof(&*controller)weakSelf = controller;
-    controller.jsNamesArray = @[@"name1",@"name2"];
+    controller.jsNamesArray = @[@"name1",@"name2",@"testAAAA"];
     
     [controller setJsCallNativeBlock:^(NSString *name, id body) {
-        if ([name isEqualToString:@"name1"]) {
-            [weakSelf handleJS:@""];
+        if ([name isEqualToString:@"testAAAA"]) {
+            [self testAAAA];
+        }
+        else if ([name isEqualToString:@"name1"]){
+            //自己先做一些列想要的操作
+            
+            // ...
+            
+            //然后手动调用js
+            NSString *testJs = [NSString stringWithFormat:@"writeCardCallback('%@');",@"fdsfsdf"];
+            [weakSelf handleJS:testJs];
         }
         else{
             
@@ -62,8 +71,18 @@
     [controller setEvaluateJSBlock:^(id response) {
         
     }];
-    controller.url = @"https://itunes.apple.com/cn/app//id847285955?mt=8";
+    controller.url = @"https://www.baidu.com";
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)testAAAA
+{
+    
+}
+
+- (void)name1
+{
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
