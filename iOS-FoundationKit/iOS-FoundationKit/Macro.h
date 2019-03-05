@@ -19,7 +19,6 @@
 
 //weakSelf 一般在block里面使用
 #define ML_WEAK_SELF(weakSelf)        __weak __typeof(&*self)weakSelf = self;
-//#define ML_STRONG_SELF(strongSelf)    __strong __typeof(&*self)strongSelf = self;
 
 #define ML_STRING_FORMAT(string)         [NSString stringWithFormat:@"%@",(string==nil||[string isKindOfClass:[NSNull class]])?@"":string]
 
