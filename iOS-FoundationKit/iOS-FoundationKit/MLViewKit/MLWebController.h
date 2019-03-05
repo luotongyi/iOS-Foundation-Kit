@@ -14,7 +14,7 @@
 @interface MLWebController : UIViewController
 
 /**
- *  @brief 加载的H5的链接
+ *  @brief 加载的H5的链接，也可以是本地html（index.html）
  **/
 @property (nonatomic, copy  )   NSString *url;
 

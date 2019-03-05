@@ -1,0 +1,70 @@
+<html>
+    <!--描述网页信息-->
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>小黄</title>
+ 		<style>
+            *{
+                font-size: 50px;
+            }
+        
+            .btn{height:80px; width:80%; padding: 0px 30px; background-color: #0071E7; border: solid 1px #0071E7; border-radius:5px; font-size: 1em; color: white}
+ 		</style>
+        
+        <script>
+            /*
+            testButtonClick: function(url,args,callback,result){
+                window.webkit.messageHandlers.showLog.postMessage({'url':url,'params':args,'callback':callback,'result':result});
+            }
+            */
+            function showLogTest() {
+                window.webkit.messageHandlers.showLog.postMessage({'text':'111','summary':'ffsf','url':'http://www.baidu.com','shareType':'0','iconUrl':''});
+            }
+            
+            //JS响应方法列表
+/*            function btnClick1() {
+                window.webkit.messageHandlers.shareToWeixin.postMessage({'text':'111','summary':'ffsf','url':'http://www.baidu.com','shareType':'0','iconUrl':''});
+            }
+
+            function btnClick2() {
+                window.webkit.messageHandlers.shareToSms.postMessage({'text':'111','summary':'ffsf','url':'http://www.baidu.com','shareType':'0','iconUrl':''});
+            }
+
+            function btnClick3() {
+                window.webkit.messageHandlers.shareToQQ.postMessage({'text':'111','summary':'ffsf','url':'http://www.baidu.com','shareType':'0','iconUrl':''});
+            }
+*/
+        </script>
+        
+        
+    </head>
+
+    <!--网页具体内容-->
+    <body>
+        <br/>
+
+		<div>
+			<label>小黄：13300001111</label>
+		</div>
+		<br/>
+
+        <div id="mobile"></div>
+		<div>
+			<button class="btn" type="button" onclick="showLogTest()">testButtonClick</button>
+		</div>
+		<br/>
+        
+        <div id="name"></div>
+		<div>
+<!--            <button class="btn" type="button" onclick="btnClick2()">测试shareToSms</button>-->
+		</div>
+		<br/>
+        
+        <div id="msg"></div>
+		<div>
+<!--            <button class="btn" type="button" onclick="btnClick3()">测试shareToQQ（0）</button>-->
+		</div>
+
+
+    </body>
+</html>

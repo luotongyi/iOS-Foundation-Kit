@@ -35,7 +35,7 @@
         _jsNamesArray = @[];
         _headerParams = @{};
         
-        jsArray = [NSMutableArray arrayWithObjects:@"", nil];
+        jsArray = [NSMutableArray array];
     }
     return self;
 }
@@ -86,14 +86,28 @@
     
     if (_url && _url.length > 0)
     {
-        webRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20];
-        NSArray *headerKeys = _headerParams.allKeys;
-        for (NSString *key in headerKeys) {
-            NSString *value = ML_STRING_FORMAT(_headerParams[key]);
-            [webRequest setValue:value forHTTPHeaderField:key];
+        if (![_url hasPrefix:@"http"]) {
+            [self loadLocalHtml:_url];
         }
-        [_wkWebView loadRequest:webRequest];
+        else{
+            webRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20];
+            NSArray *headerKeys = _headerParams.allKeys;
+            for (NSString *key in headerKeys) {
+                NSString *value = ML_STRING_FORMAT(_headerParams[key]);
+                [webRequest setValue:value forHTTPHeaderField:key];
+            }
+            [_wkWebView loadRequest:webRequest];
+        }
     }
+}
+
+- (void)loadLocalHtml:(NSString *)fileName
+{
+    NSString *fullFilePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+    NSError* error = nil;
+    NSURL* fileURL = [NSURL fileURLWithPath:fullFilePath];
+    NSString* html = [NSString stringWithContentsOfURL:fileURL encoding:NSUTF8StringEncoding error:&error];
+    [_wkWebView loadHTMLString: html baseURL: fileURL];
 }
 
 - (void)refresh
@@ -106,12 +120,18 @@
 {
     NSString *urlString = navigationAction.request.URL.absoluteString;
     if (![urlString hasPrefix:@"http"] || [urlString hasPrefix:@"https://itunes.apple.com"]) {
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
+        if ([urlString hasSuffix:@".html"]) {
+            decisionHandler(WKNavigationActionPolicyAllow);
+        }
+        else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
             });
+            decisionHandler(WKNavigationActionPolicyCancel);
         }
-        decisionHandler(WKNavigationActionPolicyAllow);
+        else{
+            decisionHandler(WKNavigationActionPolicyAllow);
+        }
     }
     else{
         if (_pushNewPage) {

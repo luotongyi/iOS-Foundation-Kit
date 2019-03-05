@@ -48,30 +48,29 @@
 - (void)testLoadWeb
 {
     MLWebController *controller = [MLWebController new];
-    __weak __typeof(&*controller)weakSelf = controller;
-    controller.jsNamesArray = @[@"name1",@"name2",@"testAAAA"];
-    
+//    __weak __typeof(&*controller)weakSelf = controller;
+    controller.jsNamesArray = @[@"showLog"];
     [controller setJsCallNativeBlock:^(NSString *name, id body) {
-        if ([name isEqualToString:@"testAAAA"]) {
-            [self testAAAA];
+        if ([name isEqualToString:@"showLog"]) {
+            NSLog(@"%@-\n-%@",name,body);
         }
         else if ([name isEqualToString:@"name1"]){
             //自己先做一些列想要的操作
-            
+
             // ...
-            
+
             //然后手动调用js
-            NSString *testJs = [NSString stringWithFormat:@"writeCardCallback('%@');",@"fdsfsdf"];
-            [weakSelf handleJS:testJs];
+//            NSString *testJs = [NSString stringWithFormat:@"writeCardCallback('%@');",@"fdsfsdf"];
+//            [weakSelf handleJS:testJs];
         }
         else{
-            
+
         }
     }];
-    [controller setEvaluateJSBlock:^(id response) {
-        
-    }];
-    controller.url = @"https://www.baidu.com";
+//    [controller setEvaluateJSBlock:^(id response) {
+//
+//    }];
+    controller.url = @"index.html";
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -88,23 +87,25 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self testLoadWeb];
+//    [self testLoadWeb];
 }
 
 - (void)testNetwork
 {
+    [self testLoadWeb];
+    
     NSLog(@"TestNetwork");
-    MLRequestItem *item = [[MLRequestItem alloc]init];
-    item.serverUrl = @"http://wwwfslfs.cidfjasd.com";
-    item.requestMethod = MLHTTP_GET;
-    item.requestParams = @{@"aa":@"dfsdf",
-                           @"bb":@"fasdfasd",
-                           @"cc":@"fasdfasdfa"};
-    [MLHTTPRequest requestItem:item successBlock:^(id responseObject) {
-        
-    } failureBlock:^(id errorObject) {
-        
-    }];
+//    MLRequestItem *item = [[MLRequestItem alloc]init];
+//    item.serverUrl = @"http://wwwfslfs.cidfjasd.com";
+//    item.requestMethod = MLHTTP_GET;
+//    item.requestParams = @{@"aa":@"dfsdf",
+//                           @"bb":@"fasdfasd",
+//                           @"cc":@"fasdfasdfa"};
+//    [MLHTTPRequest requestItem:item successBlock:^(id responseObject) {
+//
+//    } failureBlock:^(id errorObject) {
+//
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
