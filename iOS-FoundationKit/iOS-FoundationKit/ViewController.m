@@ -24,15 +24,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self testHookButton];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+    });
     
-    MLSqliteModel *model = [MLSqliteModel new];
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+    dispatch_group_t group = dispatch_group_create();
     
-    NSLog(@"%@",model.timestamp);
-    NSLog(@"%@",[MLInfoUtility getUUID]);
+    dispatch_group_enter(group);
     
-//    MLSystemKit *kit = [[MLSystemKit alloc]init];
-    [MLSystemKit registeNotification];
+    
+    
+    
+//    [self testHookButton];
+//
+//    MLSqliteModel *model = [MLSqliteModel new];
+//
+//    NSLog(@"%@",model.timestamp);
+//    NSLog(@"%@",[MLInfoUtility getUUID]);
+//
+////    MLSystemKit *kit = [[MLSystemKit alloc]init];
+//    [MLSystemKit registeNotification];
 }
 
 - (void)testHookButton
@@ -87,6 +99,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    NSLog(@"执行了首页方法");
 //    [self testLoadWeb];
 }
 

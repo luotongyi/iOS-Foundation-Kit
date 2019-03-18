@@ -29,13 +29,6 @@
 @property (nonatomic, copy  )   NSDictionary *headerParams;
 
 /**
- *  @brief 是否在新的界面打开跳转的url，默认NO
- *  一次设置，终身受益，设置为YES时，以后一直会跳转新Page
- *  如果只针对某个界面，请通过jsName方法处理
- **/
-@property (nonatomic, assign)   BOOL    pushNewPage;
-
-/**
  *  JS 调用OC 注册 messageHandler 的方法名
  *  window.webkit.messageHandlers.<name>.postMessage(<messageBody>)
  *  eg. @[@"showA",@"showB"];
@@ -66,11 +59,6 @@
  *  eg. [NSString stringWithFormat:@"writeCardCallback(%@);",[array toJSONString]];
  */
 - (void)handleJS:(NSString *)js;
-
-
-@property (nonatomic, strong)   UIView *loadingFailView;
-
-@property (nonatomic, strong)   UIView *loadingView;
 
 /**
  *  @brief 加载URL

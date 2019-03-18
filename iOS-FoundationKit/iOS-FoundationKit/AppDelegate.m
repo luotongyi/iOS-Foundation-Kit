@@ -36,7 +36,7 @@
 //    [MLStatisticsAPI registerKey:@"test"];
 //
 //    [UIApplication hookApplication];
-//    [UIViewController hookViewController];
+    [UIViewController hookViewController];
 //
 //    [MLSystemKit registeNotification];
     
