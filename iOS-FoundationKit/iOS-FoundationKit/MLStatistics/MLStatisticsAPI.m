@@ -25,6 +25,13 @@
     
     //监听crash信息
     NSSetUncaughtExceptionHandler(&MLUncaughtExceptionHandler);
+    //捕捉sinal类型的错误
+    signal(SIGABRT, SignalExceptionHandler);
+    signal(SIGILL, SignalExceptionHandler);
+    signal(SIGSEGV, SignalExceptionHandler);
+    signal(SIGFPE, SignalExceptionHandler);
+    signal(SIGBUS, SignalExceptionHandler);
+    signal(SIGPIPE, SignalExceptionHandler);
     //监听所有请求的接口
     [MLAnalyse startMonitor];
 #warning 创建数据库，用于存储crash信息和接口信息

@@ -15,4 +15,6 @@
  **/
 void MLUncaughtExceptionHandler(NSException *exception);
 
+void SignalExceptionHandler(int signal);
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MLCrashHandler.h"
+#include <execinfo.h>
 
 @implementation MLCrashHandler
 
@@ -24,6 +25,30 @@ void MLUncaughtExceptionHandler(NSException *exception)
 #warning 数据库插入，还未完善
     
     
+}
+
+void SignalExceptionHandler(int signal){
+    NSArray *callStack = [MLCrashHandler backtraceArray];
+    NSString *name = @"LMSignalException";
+    NSString *reson = [NSString stringWithFormat:@"signal %d was raised",signal];
+    NSLog(@"名字：%@ \n原因：%@\n信号捕获崩溃，堆栈信息：%@ \n",name,reson,callStack);
+    
+    //TODO:上传Exception信息
+}
+
++ (NSArray *)backtraceArray
+{
+    void* callstack[128];
+    int frames = backtrace(callstack, 128);
+    char **strs = backtrace_symbols(callstack, frames);
+    
+    NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
+    for (int i = 0; i < frames; i++) {
+        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
+    }
+    free(strs);
+    
+    return backtrace;
 }
 
 @end
