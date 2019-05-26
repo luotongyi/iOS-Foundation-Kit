@@ -123,7 +123,6 @@
 - (UIImageView *)navBgImageView{
     if (!_navBgImageView) {
         _navBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ML_SCREEN_WIDTH, ML_NAVBAR_HEIGHT)];
-        [self addSubview:_navBgImageView];
     }
     return _navBgImageView;
 }
@@ -132,7 +131,6 @@
     if (!_bgView) {
         _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ML_SCREEN_WIDTH, ML_NAVBAR_HEIGHT)];
         _bgView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:_bgView];
     }
     return _bgView;
 }
@@ -145,7 +143,6 @@
         _navTitleLb.textAlignment = NSTextAlignmentCenter;
         _navTitleLb.font = [UIFont systemFontOfSize:17];
         _navTitleLb.lineBreakMode = NSLineBreakByTruncatingMiddle;
-        [self addSubview:_navTitleLb];
     }
     return _navTitleLb;
 }
@@ -154,7 +151,6 @@
     if (!_navLine) {
         _navLine = [[UIView alloc] initWithFrame:CGRectMake(0, ML_NAVBAR_HEIGHT-0.5, ML_SCREEN_WIDTH, 0.5f)];
         _navLine.backgroundColor = [self colorWithHexString:@"#CCCCCC" alpha:1];
-        [self addSubview:_navLine];
     }
     return _navLine;
 }
