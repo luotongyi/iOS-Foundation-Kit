@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)   UIImage *navBackgroundImage;
 
 /**
- 导航栏alpha设置
+ 导航栏alpha设置，文字和按钮可以正常显示
  */
 @property (nonatomic, assign)   CGFloat navAlpha;
 

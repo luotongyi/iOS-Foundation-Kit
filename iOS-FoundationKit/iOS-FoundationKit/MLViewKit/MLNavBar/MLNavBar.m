@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong)   UILabel *navTitleLb;
 
+@property (nonatomic, strong)   UIView *bgView;
+
 @end
 
 @implementation MLNavBar
@@ -24,9 +26,9 @@
 {
     self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        
+//        self.backgroundColor = [UIColor whiteColor];
         self.frame = CGRectMake(0, 0, ML_SCREEN_WIDTH, ML_NAVBAR_HEIGHT);
+        
         [self reloadNavBar];
     }
     return self;
@@ -36,7 +38,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+//        self.backgroundColor = [UIColor whiteColor];
         
         self.frame = CGRectMake(0, 0, ML_SCREEN_WIDTH, ML_NAVBAR_HEIGHT);
         [self reloadNavBar];
@@ -47,6 +49,7 @@
 - (void)reloadNavBar{
     self.baseViewY = ML_NAVBAR_HEIGHT;
     
+    [self addSubview:self.bgView];
     [self addSubview:self.navBgImageView];
     [self addSubview:self.navTitleLb];
     [self addSubview:self.navLine];
@@ -66,7 +69,7 @@
 
 - (void)setNavBackgroundColor:(UIColor *)navBackgroundColor{
     _navBackgroundColor = navBackgroundColor;
-    self.backgroundColor = _navBackgroundColor;
+    self.bgView.backgroundColor = _navBackgroundColor;
 }
 
 - (void)setNavBackgroundImage:(UIImage *)navBackgroundImage{
@@ -76,7 +79,7 @@
 
 - (void)setNavAlpha:(CGFloat)navAlpha{
     _navAlpha = navAlpha;
-    self.alpha = _navAlpha;
+    self.bgView.alpha =_navAlpha;
 }
 
 - (void)setNavLineHidden:(BOOL)navLineHidden{
@@ -128,6 +131,13 @@
     return _navBgImageView;
 }
 
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ML_SCREEN_WIDTH, ML_NAVBAR_HEIGHT)];
+        [self addSubview:_bgView];
+    }
+    return _bgView;
+}
 
 - (UILabel *)navTitleLb{
     if (!_navTitleLb) {

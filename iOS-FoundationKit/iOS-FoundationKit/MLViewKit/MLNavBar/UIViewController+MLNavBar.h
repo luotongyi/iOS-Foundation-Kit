@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)   MLNavBar *navBar;
 
+
+/**
+ 加载navBar，最好在添加完所有的view添加
+ 也可通过HOOK的方式上线自动放到最上面（还未实现）
+ */
 - (void)reloadNavigationBar;
 
 @end
