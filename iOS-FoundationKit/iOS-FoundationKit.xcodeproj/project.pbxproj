@@ -39,6 +39,8 @@
 		B9D2328821FEF97900562A5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328721FEF97900562A5D /* Assets.xcassets */; };
 		B9D2328B21FEF97900562A5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D2328921FEF97900562A5D /* LaunchScreen.storyboard */; };
 		B9D2328E21FEF97900562A5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2328D21FEF97900562A5D /* main.m */; };
+		B9D2B485229C1667008DEBAE /* MLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2B481229C1667008DEBAE /* MLTabBar.m */; };
+		B9D2B486229C1667008DEBAE /* MLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2B483229C1667008DEBAE /* MLTabBarController.m */; };
 		B9E098972296D5EF00E4E877 /* MLNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E098932296D5EF00E4E877 /* MLNavBar.m */; };
 		B9E098982296D5EF00E4E877 /* MLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E098952296D5EF00E4E877 /* MLNavigationController.m */; };
 		B9FCADE82202E2C800ABCCD0 /* MLHookURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FCADE72202E2C800ABCCD0 /* MLHookURLSession.m */; };
@@ -109,6 +111,10 @@
 		B9D2328A21FEF97900562A5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D2328C21FEF97900562A5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D2328D21FEF97900562A5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B9D2B481229C1667008DEBAE /* MLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTabBar.m; sourceTree = "<group>"; };
+		B9D2B482229C1667008DEBAE /* MLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTabBarController.h; sourceTree = "<group>"; };
+		B9D2B483229C1667008DEBAE /* MLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTabBarController.m; sourceTree = "<group>"; };
+		B9D2B484229C1667008DEBAE /* MLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTabBar.h; sourceTree = "<group>"; };
 		B9E098932296D5EF00E4E877 /* MLNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLNavBar.m; sourceTree = "<group>"; };
 		B9E098942296D5EF00E4E877 /* MLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLNavigationController.h; sourceTree = "<group>"; };
 		B9E098952296D5EF00E4E877 /* MLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLNavigationController.m; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		B95B65562201819D006EC636 /* MLViewKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9D2B480229C1620008DEBAE /* MLTabBar */,
 				B9E098922296B7F300E4E877 /* MLNavBar */,
 				B972DF922223974E00CA7CAA /* MLWebController.h */,
 				B972DF932223974E00CA7CAA /* MLWebController.m */,
@@ -274,6 +281,17 @@
 			path = "iOS-FoundationKit";
 			sourceTree = "<group>";
 		};
+		B9D2B480229C1620008DEBAE /* MLTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2B484229C1667008DEBAE /* MLTabBar.h */,
+				B9D2B481229C1667008DEBAE /* MLTabBar.m */,
+				B9D2B482229C1667008DEBAE /* MLTabBarController.h */,
+				B9D2B483229C1667008DEBAE /* MLTabBarController.m */,
+			);
+			path = MLTabBar;
+			sourceTree = "<group>";
+		};
 		B9E098922296B7F300E4E877 /* MLNavBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +397,7 @@
 				B91280BA221573DF004EC2E9 /* MLTipsView.m in Sources */,
 				B91280A22215553B004EC2E9 /* MLShareResult.m in Sources */,
 				B9D2328E21FEF97900562A5D /* main.m in Sources */,
+				B9D2B485229C1667008DEBAE /* MLTabBar.m in Sources */,
 				B9FCADE82202E2C800ABCCD0 /* MLHookURLSession.m in Sources */,
 				B9641072221691E200EE9DF6 /* MLViewUtility.m in Sources */,
 				B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */,
@@ -388,6 +407,7 @@
 				B9FCADEB2202E95F00ABCCD0 /* MLSqliteInstance.m in Sources */,
 				B91280C12215762E004EC2E9 /* MLSecurity.m in Sources */,
 				B912809F221554C4004EC2E9 /* MLShareObject.m in Sources */,
+				B9D2B486229C1667008DEBAE /* MLTabBarController.m in Sources */,
 				B99B60C5220290F000B7D1DA /* MLInstance.m in Sources */,
 				B95B656522019696006EC636 /* UIApplication+MLHook.m in Sources */,
 			);
