@@ -14,6 +14,8 @@
 
 #import "MLSystemKit.h"
 
+#import "MLAuthority.h"
+
 @interface ViewController ()
 
 @end
@@ -33,7 +35,9 @@
     
     dispatch_group_enter(group);
     
-    
+    [MLAuthority checkAuthority:MLPhotoLibrary complete:^(BOOL result) {
+        
+    }];
     
     
 //    [self testHookButton];

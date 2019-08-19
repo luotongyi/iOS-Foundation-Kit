@@ -25,6 +25,7 @@
 		B963C19C220D17FB000F28A5 /* MLBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19B220D17FB000F28A5 /* MLBaseViewModel.m */; };
 		B963C19F220D1CD5000F28A5 /* UIView+MLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */; };
 		B9641072221691E200EE9DF6 /* MLViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B9641071221691E200EE9DF6 /* MLViewUtility.m */; };
+		B9655D60230A482100B3241D /* MLAuthority.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5F230A482100B3241D /* MLAuthority.m */; };
 		B972DF942223974E00CA7CAA /* MLWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B972DF932223974E00CA7CAA /* MLWebController.m */; };
 		B97B76FA229798C20090AABD /* UIViewController+MLNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B97B76F9229798C20090AABD /* UIViewController+MLNavBar.m */; };
 		B97BD88822225689002D7026 /* MLRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B97BD88722225689002D7026 /* MLRouter.m */; };
@@ -84,6 +85,8 @@
 		B963C19E220D1CD5000F28A5 /* UIView+MLFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLFrame.m"; sourceTree = "<group>"; };
 		B9641070221691E200EE9DF6 /* MLViewUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLViewUtility.h; sourceTree = "<group>"; };
 		B9641071221691E200EE9DF6 /* MLViewUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLViewUtility.m; sourceTree = "<group>"; };
+		B9655D5E230A482100B3241D /* MLAuthority.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLAuthority.h; sourceTree = "<group>"; };
+		B9655D5F230A482100B3241D /* MLAuthority.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLAuthority.m; sourceTree = "<group>"; };
 		B972DF922223974E00CA7CAA /* MLWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLWebController.h; sourceTree = "<group>"; };
 		B972DF932223974E00CA7CAA /* MLWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MLWebController.m; sourceTree = "<group>"; };
 		B97B76F8229798C20090AABD /* UIViewController+MLNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MLNavBar.h"; sourceTree = "<group>"; };
@@ -236,6 +239,15 @@
 			path = MLUtility;
 			sourceTree = "<group>";
 		};
+		B9655D5D230A480400B3241D /* MLAuthority */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D5E230A482100B3241D /* MLAuthority.h */,
+				B9655D5F230A482100B3241D /* MLAuthority.m */,
+			);
+			path = MLAuthority;
+			sourceTree = "<group>";
+		};
 		B9D2327221FEF97800562A5D = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +273,7 @@
 				B9D2328121FEF97800562A5D /* ViewController.h */,
 				B9D2328221FEF97800562A5D /* ViewController.m */,
 				B95B655A220184D6006EC636 /* Macro.h */,
+				B9655D5D230A480400B3241D /* MLAuthority */,
 				B91280BB221575D3004EC2E9 /* MLSecurity */,
 				B912809C221554A7004EC2E9 /* MLShareKit */,
 				B95B656C2201A0BD006EC636 /* MLStatistics */,
@@ -384,6 +397,7 @@
 				B91280AE22156590004EC2E9 /* NSString+MLUtility.m in Sources */,
 				B95B656122018B3E006EC636 /* MLHTTPRequest.m in Sources */,
 				B99B60D72202D37200B7D1DA /* MLSqliteModel.m in Sources */,
+				B9655D60230A482100B3241D /* MLAuthority.m in Sources */,
 				B9E098972296D5EF00E4E877 /* MLNavBar.m in Sources */,
 				B9D2328321FEF97800562A5D /* ViewController.m in Sources */,
 				B99B60CB22029E9A00B7D1DA /* MLCrashHandler.m in Sources */,
@@ -472,7 +486,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -524,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
